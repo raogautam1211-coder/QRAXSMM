@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Qraxsmm — Premium SMM Panel</title>
 
 <style>
@@ -10,12 +12,26 @@
   box-sizing:border-box;
   margin:0;
   padding:0;
-  font-family:Arial,sans-serif;
+}
+
+:root{
+  --green:#00ff88;
+  --green2:#00c968;
+  --bg:#050505;
+  --card:#0d0d0d;
+  --border:#202020;
+  --muted:#999;
+  --white:#fff;
 }
 
 body{
-  background:#050505;
-  color:#fff;
+  background:var(--bg);
+  color:var(--white);
+  font-family:Arial,sans-serif;
+}
+
+button,input,select{
+  font:inherit;
 }
 
 .app{
@@ -23,50 +39,58 @@ body{
   min-height:100vh;
 }
 
+/* SIDEBAR */
+
 .sidebar{
   width:240px;
-  background:#0b0b0b;
-  border-right:1px solid #1b1b1b;
+  background:#090909;
+  border-right:1px solid #202020;
   padding:25px 15px;
+  position:fixed;
+  left:0;
+  top:0;
+  bottom:0;
 }
 
 .logo{
-  font-size:25px;
+  font-size:27px;
   font-weight:900;
-  color:#fff;
+  padding:0 10px;
   margin-bottom:35px;
-  padding-left:10px;
 }
 
 .logo span{
-  color:#00ff88;
+  color:var(--green);
+}
+
+.nav{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
 }
 
 .nav button{
-  width:100%;
   border:0;
   background:transparent;
   color:#aaa;
-  padding:14px 15px;
-  text-align:left;
+  padding:14px;
   border-radius:10px;
-  margin-bottom:7px;
+  text-align:left;
   cursor:pointer;
-  font-size:14px;
 }
 
 .nav button:hover,
 .nav button.active{
-  background:#10251b;
-  color:#00ff88;
+  background:#10271b;
+  color:var(--green);
 }
 
+/* MAIN */
+
 .main{
-  flex:1;
+  margin-left:240px;
+  width:calc(100% - 240px);
   padding:25px;
-  max-width:1200px;
-  margin:auto;
-  width:100%;
 }
 
 .topbar{
@@ -77,20 +101,22 @@ body{
 }
 
 .topbar h1{
-  font-size:24px;
+  font-size:27px;
 }
 
 .balance{
   background:#101010;
-  border:1px solid #1d1d1d;
-  padding:10px 16px;
-  border-radius:10px;
+  border:1px solid #222;
+  padding:12px 18px;
+  border-radius:12px;
 }
 
 .balance span{
-  color:#00ff88;
+  color:var(--green);
   font-weight:bold;
 }
+
+/* PAGE */
 
 .page{
   display:none;
@@ -100,36 +126,41 @@ body{
   display:block;
 }
 
+/* CARD */
+
 .card{
-  background:#0d0d0d;
-  border:1px solid #1d1d1d;
-  border-radius:16px;
-  padding:22px;
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:24px;
   margin-bottom:20px;
 }
 
 .card h2{
   margin-bottom:18px;
-  font-size:19px;
 }
 
+/* HERO */
+
 .hero{
-  background:linear-gradient(135deg,#0b2418,#080808);
-  border:1px solid #16452e;
-  padding:30px;
+  background:linear-gradient(135deg,#092217,#080808);
+  border:1px solid #15512f;
   border-radius:18px;
+  padding:30px;
   margin-bottom:20px;
 }
 
 .hero h2{
-  color:#00ff88;
-  font-size:27px;
+  color:var(--green);
+  font-size:28px;
   margin-bottom:10px;
 }
 
 .hero p{
   color:#aaa;
 }
+
+/* STATS */
 
 .stats{
   display:grid;
@@ -138,10 +169,10 @@ body{
 }
 
 .stat{
-  background:#0d0d0d;
-  border:1px solid #1d1d1d;
-  padding:20px;
+  background:var(--card);
+  border:1px solid var(--border);
   border-radius:15px;
+  padding:20px;
 }
 
 .stat small{
@@ -150,10 +181,12 @@ body{
 
 .stat strong{
   display:block;
+  color:var(--green);
+  font-size:24px;
   margin-top:8px;
-  font-size:22px;
-  color:#00ff88;
 }
+
+/* FORM */
 
 label{
   display:block;
@@ -165,26 +198,26 @@ label{
 input,
 select{
   width:100%;
-  background:#080808;
+  background:#070707;
+  color:white;
   border:1px solid #292929;
-  color:#fff;
-  padding:13px;
-  border-radius:9px;
+  padding:14px;
+  border-radius:10px;
   outline:none;
-  margin-bottom:15px;
+  margin-bottom:16px;
 }
 
 input:focus,
 select:focus{
-  border-color:#00ff88;
+  border-color:var(--green);
 }
 
 .btn{
-  border:0;
-  background:#00ff88;
+  background:var(--green);
   color:#001b0d;
-  padding:13px 18px;
-  border-radius:9px;
+  border:0;
+  padding:13px 20px;
+  border-radius:10px;
   font-weight:bold;
   cursor:pointer;
 }
@@ -193,61 +226,67 @@ select:focus{
   opacity:.9;
 }
 
+/* UPI */
+
 .upi-box{
-  background:#07140e;
-  border:1px solid #16512f;
-  border-radius:15px;
-  padding:18px;
-  margin-bottom:18px;
+  background:#00170d;
+  border:1px solid #09683a;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:20px;
 }
 
-.upi-id{
+.upi-title{
+  color:#aaa;
+  margin-bottom:10px;
+}
+
+.upi-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
   gap:10px;
   background:#050505;
-  border:1px solid #222;
+  border:1px solid #292929;
   padding:13px;
-  border-radius:10px;
-  margin-top:8px;
+  border-radius:11px;
 }
 
-.upi-id strong{
-  color:#00ff88;
+.upi-row strong{
+  color:var(--green);
   word-break:break-all;
 }
 
 .copy-btn{
-  background:#00ff88;
+  background:var(--green);
   color:#001b0d;
   border:0;
-  padding:8px 12px;
-  border-radius:7px;
+  padding:9px 13px;
+  border-radius:8px;
   font-weight:bold;
   cursor:pointer;
 }
 
-.pay-btn{
-  width:100%;
-  margin-top:5px;
-  font-size:16px;
-  padding:15px;
+#copyMsg{
+  color:var(--green);
+  font-size:12px;
+  margin-top:8px;
 }
 
-.note{
-  color:#888;
-  font-size:12px;
-  line-height:1.6;
-  margin-top:15px;
+.pay-btn{
+  width:100%;
+  padding:16px;
+  font-size:17px;
 }
+
+/* QR */
 
 #qrBox{
   display:none;
-  margin-top:18px;
+  background:white;
+  border-radius:16px;
   padding:18px;
-  background:#fff;
-  border-radius:14px;
+  margin-top:18px;
   text-align:center;
 }
 
@@ -256,35 +295,88 @@ select:focus{
   justify-content:center;
 }
 
-#qrBox div{
+.qr-title{
   color:#111;
+  font-weight:bold;
+  margin-top:10px;
 }
 
-.services{
-  display:grid;
-  gap:12px;
+#qrAmount{
+  color:#333;
+  margin-top:5px;
 }
+
+/* UTR */
+
+.utr-card{
+  background:#0b0f0c;
+  border:1px solid #21412e;
+  border-radius:16px;
+  padding:20px;
+  margin-top:20px;
+}
+
+.utr-card h2{
+  color:var(--green);
+}
+
+.utr-info{
+  color:#999;
+  font-size:13px;
+  line-height:1.6;
+  margin-bottom:15px;
+}
+
+#utrMsg{
+  margin-top:12px;
+  font-size:13px;
+}
+
+/* SERVICES */
 
 .service{
-  padding:16px;
-  border:1px solid #1d1d1d;
-  background:#0b0b0b;
+  background:#090909;
+  border:1px solid var(--border);
+  padding:17px;
   border-radius:12px;
+  margin-bottom:12px;
 }
 
 .service strong{
-  color:#00ff88;
+  color:var(--green);
 }
 
-.empty{
-  color:#777;
-  padding:20px 0;
+.service p{
+  color:#888;
+  margin-top:6px;
+  font-size:13px;
 }
+
+/* ORDERS */
+
+.order{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#090909;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:10px;
+}
+
+.status{
+  color:#ffc107;
+  font-size:12px;
+}
+
+/* MOBILE */
 
 @media(max-width:750px){
+
   .sidebar{
     width:70px;
-    padding:15px 8px;
+    padding:20px 8px;
   }
 
   .logo{
@@ -295,35 +387,47 @@ select:focus{
 
   .logo:after{
     content:"Q";
-    font-size:25px;
-    color:#00ff88;
+    color:var(--green);
+    font-size:28px;
+    font-weight:bold;
   }
 
   .nav button{
-    text-align:center;
     font-size:0;
+    text-align:center;
   }
 
   .nav button:before{
-    content:"•";
-    font-size:22px;
-    color:#00ff88;
+    content:"●";
+    font-size:15px;
+    color:var(--green);
   }
 
   .main{
+    margin-left:70px;
+    width:calc(100% - 70px);
     padding:15px;
+  }
+
+  .topbar{
+    gap:10px;
+  }
+
+  .topbar h1{
+    font-size:21px;
+  }
+
+  .balance{
+    font-size:13px;
+    padding:10px;
   }
 
   .stats{
     grid-template-columns:1fr;
   }
 
-  .topbar{
+  .upi-row{
     align-items:flex-start;
-  }
-
-  .topbar h1{
-    font-size:20px;
   }
 }
 </style>
@@ -333,382 +437,827 @@ select:focus{
 
 <div class="app">
 
-  <aside class="sidebar">
-    <div class="logo">Qrax<span>smm</span></div>
+<!-- SIDEBAR -->
 
-    <div class="nav">
-      <button class="active" onclick="showPage('dashboard',this)">Dashboard</button>
-      <button onclick="showPage('order',this)">New Order</button>
-      <button onclick="showPage('services',this)">Services</button>
-      <button onclick="showPage('orders',this)">Orders</button>
-      <button onclick="showPage('funds',this)">Add Funds</button>
-      <button onclick="showPage('support',this)">Support</button>
+<aside class="sidebar">
+
+  <div class="logo">
+    Qrax<span>smm</span>
+  </div>
+
+  <div class="nav">
+
+    <button class="active"
+      onclick="showPage('dashboard',this)">
+      Dashboard
+    </button>
+
+    <button onclick="showPage('order',this)">
+      New Order
+    </button>
+
+    <button onclick="showPage('services',this)">
+      Services
+    </button>
+
+    <button onclick="showPage('orders',this)">
+      Orders
+    </button>
+
+    <button onclick="showPage('funds',this)">
+      Add Funds
+    </button>
+
+    <button onclick="showPage('support',this)">
+      Support
+    </button>
+
+  </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+  <div class="topbar">
+
+    <h1 id="pageTitle">
+      Dashboard
+    </h1>
+
+    <div class="balance">
+      Balance:
+      <span>₹0.00</span>
     </div>
-  </aside>
 
-  <main class="main">
+  </div>
 
-    <div class="topbar">
-      <h1 id="pageTitle">Dashboard</h1>
-      <div class="balance">
-        Balance: <span>₹0.00</span>
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="page active">
+
+  <div class="hero">
+
+    <h2>
+      Welcome to Qraxsmm
+    </h2>
+
+    <p>
+      Premium Social Media Marketing Panel
+    </p>
+
+  </div>
+
+  <div class="stats">
+
+    <div class="stat">
+      <small>Wallet Balance</small>
+      <strong>₹0.00</strong>
+    </div>
+
+    <div class="stat">
+      <small>Total Orders</small>
+      <strong>0</strong>
+    </div>
+
+    <div class="stat">
+      <small>Completed</small>
+      <strong>0</strong>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- NEW ORDER -->
+
+<section id="order" class="page">
+
+  <div class="card">
+
+    <h2>🛒 New Order</h2>
+
+    <label>Select Service</label>
+
+    <select id="orderService">
+
+      <option>Instagram Followers</option>
+      <option>Instagram Likes</option>
+      <option>Instagram Views</option>
+      <option>YouTube Views</option>
+      <option>YouTube Subscribers</option>
+
+    </select>
+
+    <label>Link</label>
+
+    <input
+      id="orderLink"
+      type="url"
+      placeholder="Enter post/profile link"
+    >
+
+    <label>Quantity</label>
+
+    <input
+      id="orderQuantity"
+      type="number"
+      placeholder="Enter quantity"
+    >
+
+    <button class="btn"
+      onclick="placeOrder()">
+      Place Order
+    </button>
+
+    <div id="orderMsg"></div>
+
+  </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services" class="page">
+
+  <div class="card">
+
+    <h2>📦 Services</h2>
+
+    <div class="service">
+      <strong>Instagram Followers</strong>
+      <p>Premium Instagram followers.</p>
+    </div>
+
+    <div class="service">
+      <strong>Instagram Likes</strong>
+      <p>Fast Instagram likes.</p>
+    </div>
+
+    <div class="service">
+      <strong>Instagram Views</strong>
+      <p>Instagram video views.</p>
+    </div>
+
+    <div class="service">
+      <strong>YouTube Views</strong>
+      <p>YouTube video views.</p>
+    </div>
+
+    <div class="service">
+      <strong>YouTube Subscribers</strong>
+      <p>YouTube channel subscribers.</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ORDERS -->
+
+<section id="orders" class="page">
+
+  <div class="card">
+
+    <h2>📋 Orders</h2>
+
+    <div id="ordersList">
+      <div style="color:#777;">
+        No orders yet.
       </div>
     </div>
 
-    <!-- DASHBOARD -->
-    <section id="dashboard" class="page active">
+  </div>
 
-      <div class="hero">
-        <h2>Welcome to Qraxsmm</h2>
-        <p>Premium Social Media Marketing Panel</p>
+</section>
+
+
+<!-- ADD FUNDS -->
+
+<section id="funds" class="page">
+
+  <div class="card">
+
+    <h2>💳 Add Funds</h2>
+
+
+    <!-- UPI ID -->
+
+    <div class="upi-box">
+
+      <div class="upi-title">
+        Pay securely using UPI
       </div>
 
-      <div class="stats">
-        <div class="stat">
-          <small>Balance</small>
-          <strong>₹0.00</strong>
-        </div>
+      <div class="upi-row">
 
-        <div class="stat">
-          <small>Total Orders</small>
-          <strong>0</strong>
-        </div>
+        <strong id="upiId">
+          raogautam1211@oksbi
+        </strong>
 
-        <div class="stat">
-          <small>Completed</small>
-          <strong>0</strong>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- NEW ORDER -->
-    <section id="order" class="page">
-
-      <div class="card">
-        <h2>New Order</h2>
-
-        <label>Select Service</label>
-        <select>
-          <option>Instagram Followers</option>
-          <option>Instagram Likes</option>
-          <option>Instagram Views</option>
-          <option>YouTube Views</option>
-          <option>YouTube Subscribers</option>
-        </select>
-
-        <label>Link</label>
-        <input type="text" placeholder="Enter post/profile link">
-
-        <label>Quantity</label>
-        <input type="number" placeholder="Enter quantity">
-
-        <button class="btn">Place Order</button>
-      </div>
-
-    </section>
-
-    <!-- SERVICES -->
-    <section id="services" class="page">
-
-      <div class="card">
-        <h2>Services</h2>
-
-        <div class="services">
-
-          <div class="service">
-            <strong>Instagram Followers</strong>
-            <p>Premium quality Instagram followers.</p>
-          </div>
-
-          <div class="service">
-            <strong>Instagram Likes</strong>
-            <p>Fast Instagram likes for your posts.</p>
-          </div>
-
-          <div class="service">
-            <strong>Instagram Views</strong>
-            <p>High quality Instagram video views.</p>
-          </div>
-
-          <div class="service">
-            <strong>YouTube Views</strong>
-            <p>Boost your YouTube video views.</p>
-          </div>
-
-          <div class="service">
-            <strong>YouTube Subscribers</strong>
-            <p>Grow your YouTube channel.</p>
-          </div>
-
-        </div>
-      </div>
-
-    </section>
-
-    <!-- ORDERS -->
-    <section id="orders" class="page">
-
-      <div class="card">
-        <h2>Orders</h2>
-        <div class="empty">No orders found.</div>
-      </div>
-
-    </section>
-
-    <!-- ADD FUNDS -->
-    <section id="funds" class="page">
-
-      <div class="card">
-
-        <h2>💳 Add Funds</h2>
-
-        <div class="upi-box">
-
-          <div style="font-size:13px;color:#aaa;">
-            Pay securely using UPI
-          </div>
-
-          <div class="upi-id">
-            <strong id="upiId">raogautam1211@oksbi</strong>
-
-            <button class="copy-btn" onclick="copyUpi()">
-              Copy
-            </button>
-          </div>
-
-          <div id="copyMsg"
-               style="font-size:12px;color:#00ff88;margin-top:8px;">
-          </div>
-
-        </div>
-
-        <label>Enter Amount</label>
-
-        <input
-          type="number"
-          id="amount"
-          min="50"
-          max="50000"
-          placeholder="Minimum ₹50"
-        >
-
-        <button class="btn pay-btn" onclick="payViaUpi()">
-          💳 Pay via UPI
+        <button
+          class="copy-btn"
+          onclick="copyUpi()">
+          Copy
         </button>
 
-        <!-- QR CODE -->
-        <div id="qrBox">
+      </div>
 
-          <div id="upiQr"></div>
+      <div id="copyMsg"></div>
 
-          <div style="
-            font-size:13px;
-            font-weight:bold;
-            margin-top:10px;
-          ">
-            Scan this QR with your UPI phone
-          </div>
+    </div>
 
-          <div
-            id="qrAmount"
-            style="
-              font-size:12px;
-              margin-top:5px;
-            ">
-          </div>
 
-        </div>
+    <!-- AMOUNT -->
 
-        <div class="note">
-          Minimum amount: ₹50<br>
-          Maximum amount: ₹50,000<br><br>
+    <label>
+      Enter Amount
+    </label>
 
-          Agar UPI app automatically open na ho,
-          QR code ko apne second phone se scan karein.
-          Payment ke baad UTR/Transaction ID save rakhein
-          verification ke liye.
-        </div>
+    <input
+      id="amount"
+      type="number"
+      min="50"
+      max="50000"
+      placeholder="Minimum ₹50"
+    >
+
+
+    <!-- PAY BUTTON -->
+
+    <button
+      class="btn pay-btn"
+      onclick="payViaUpi()">
+
+      💳 Pay via UPI
+
+    </button>
+
+
+    <!-- QR CODE -->
+
+    <div id="qrBox">
+
+      <div id="upiQr"></div>
+
+      <div class="qr-title">
+        Scan this QR with your UPI phone
+      </div>
+
+      <div id="qrAmount"></div>
+
+    </div>
+
+
+    <div style="
+      color:#888;
+      font-size:12px;
+      line-height:1.7;
+      margin-top:17px;
+    ">
+
+      Minimum amount: ₹50<br>
+      Maximum amount: ₹50,000<br><br>
+
+      Agar UPI app automatically open na ho,
+      QR code ko apne second phone se scan karein.
+
+    </div>
+
+
+    <!-- UTR SECTION -->
+    <!-- YE QR KE TURANT BAAD HAI -->
+
+    <div class="utr-card">
+
+      <h2>
+        ✅ Payment Verification
+      </h2>
+
+      <div class="utr-info">
+
+        Payment complete karne ke baad
+        apna UTR / Transaction ID yahan
+        enter karein.
 
       </div>
 
-      <div class="card">
-        <h2>Current Balance</h2>
+      <label>
+        UTR / Transaction ID
+      </label>
 
-        <div style="
-          font-size:30px;
-          color:#00ff88;
-          font-weight:bold;
-        ">
-          ₹0.00
-        </div>
-      </div>
+      <input
+        id="utr"
+        type="text"
+        maxlength="30"
+        placeholder="Enter UTR / Transaction ID"
+      >
 
-    </section>
+      <button
+        class="btn"
+        onclick="submitUTR()">
 
-    <!-- SUPPORT -->
-    <section id="support" class="page">
+        Submit Payment
 
-      <div class="card">
-        <h2>Support</h2>
+      </button>
 
-        <p style="color:#aaa;line-height:1.7;">
-          Payment ya order se related help ke liye
-          support se contact karein.
-        </p>
+      <div id="utrMsg"></div>
 
-      </div>
+    </div>
 
-    </section>
+  </div>
 
-  </main>
+
+  <!-- CURRENT BALANCE -->
+
+  <div class="card">
+
+    <h2>
+      Current Balance
+    </h2>
+
+    <div style="
+      font-size:30px;
+      color:var(--green);
+      font-weight:bold;
+    ">
+      ₹0.00
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- SUPPORT -->
+
+<section id="support" class="page">
+
+  <div class="card">
+
+    <h2>🎧 Support</h2>
+
+    <p style="
+      color:#888;
+      line-height:1.7;
+    ">
+
+      Payment ya order se related help ke liye
+      support se contact karein.
+
+    </p>
+
+  </div>
+
+</section>
+
+</main>
 
 </div>
 
+
 <script>
+
+/* PAGE NAVIGATION */
 
 function showPage(pageId,button){
 
-  document.querySelectorAll('.page')
+  document
+    .querySelectorAll('.page')
     .forEach(function(page){
+
       page.classList.remove('active');
+
     });
 
-  document.getElementById(pageId)
+
+  document
+    .getElementById(pageId)
     .classList.add('active');
 
-  document.querySelectorAll('.nav button')
+
+  document
+    .querySelectorAll('.nav button')
     .forEach(function(btn){
+
       btn.classList.remove('active');
+
     });
+
 
   button.classList.add('active');
 
+
   var titles = {
+
     dashboard:'Dashboard',
     order:'New Order',
     services:'Services',
     orders:'Orders',
     funds:'Add Funds',
     support:'Support'
+
   };
 
-  document.getElementById('pageTitle')
-    .textContent = titles[pageId];
+
+  document
+    .getElementById('pageTitle')
+    .textContent =
+    titles[pageId];
+
 }
 
+
+/* COPY UPI */
 
 function copyUpi(){
 
-  var upi = 'raogautam1211@oksbi';
+  var upi =
+    'raogautam1211@oksbi';
 
-  navigator.clipboard.writeText(upi)
-    .then(function(){
 
-      document.getElementById('copyMsg')
-        .textContent = 'UPI ID copied!';
+  if(navigator.clipboard){
 
-    })
-    .catch(function(){
+    navigator.clipboard
+      .writeText(upi)
+      .then(function(){
 
-      var temp = document.createElement('textarea');
-      temp.value = upi;
+        document
+          .getElementById('copyMsg')
+          .textContent =
+          'UPI ID copied!';
 
-      document.body.appendChild(temp);
-      temp.select();
+      });
 
-      document.execCommand('copy');
+  }else{
 
-      document.body.removeChild(temp);
+    var temp =
+      document.createElement('textarea');
 
-      document.getElementById('copyMsg')
-        .textContent = 'UPI ID copied!';
+    temp.value = upi;
 
-    });
+    document.body.appendChild(temp);
+
+    temp.select();
+
+    document.execCommand('copy');
+
+    document.body.removeChild(temp);
+
+    document
+      .getElementById('copyMsg')
+      .textContent =
+      'UPI ID copied!';
+
+  }
+
 }
 
+
+/* PAY VIA UPI + QR */
 
 function payViaUpi(){
 
   var amount =
-    document.getElementById('amount').value;
+    Number(
+      document
+        .getElementById('amount')
+        .value
+    );
 
-  amount = Number(amount);
 
   if(!amount || amount < 50){
 
-    alert('Minimum amount ₹50 hai.');
+    alert(
+      'Minimum amount ₹50 hai.'
+    );
 
     return;
+
   }
+
 
   if(amount > 50000){
 
-    alert('Maximum amount ₹50,000 hai.');
+    alert(
+      'Maximum amount ₹50,000 hai.'
+    );
 
     return;
+
   }
 
-  var upiId = 'raogautam1211@oksbi';
+
+  var upiId =
+    'raogautam1211@oksbi';
+
 
   var url =
     'upi://pay?pa=' +
     encodeURIComponent(upiId) +
+
     '&pn=' +
     encodeURIComponent('Qraxsmm') +
+
     '&am=' +
     amount.toFixed(2) +
+
     '&cu=INR' +
+
     '&tn=' +
     encodeURIComponent('Qraxsmm Add Funds');
 
-  /* QR BOX SHOW */
 
-  document.getElementById('qrBox')
-    .style.display = 'block';
+  /* SHOW QR */
 
-  document.getElementById('qrAmount')
+  document
+    .getElementById('qrBox')
+    .style.display =
+    'block';
+
+
+  document
+    .getElementById('qrAmount')
     .textContent =
-    'Amount: ₹' + amount.toFixed(2);
+    'Amount: ₹' +
+    amount.toFixed(2);
 
-  document.getElementById('upiQr')
-    .innerHTML = '';
+
+  document
+    .getElementById('upiQr')
+    .innerHTML =
+    '';
+
 
   /* GENERATE QR */
 
   if(window.QRCode){
 
     new QRCode(
+
       document.getElementById('upiQr'),
+
       {
         text:url,
         width:210,
         height:210
       }
+
     );
 
   }
 
-  document.getElementById('copyMsg')
+
+  document
+    .getElementById('copyMsg')
     .textContent =
     'QR code generated. Scan it from your UPI phone.';
 
-  /* TRY OPENING UPI APP */
+
+  /* TRY UPI APP */
 
   try{
 
-    window.location.href = url;
+    window.location.href =
+      url;
 
   }catch(e){}
 
 }
 
+
+/* UTR SUBMIT */
+
+function submitUTR(){
+
+  var utr =
+    document
+      .getElementById('utr')
+      .value
+      .trim();
+
+
+  var msg =
+    document
+      .getElementById('utrMsg');
+
+
+  if(!utr){
+
+    msg.style.color =
+      '#ff5555';
+
+    msg.textContent =
+      'Please enter your UTR / Transaction ID.';
+
+    return;
+
+  }
+
+
+  if(utr.length < 6){
+
+    msg.style.color =
+      '#ff5555';
+
+    msg.textContent =
+      'Please enter a valid UTR / Transaction ID.';
+
+    return;
+
+  }
+
+
+  localStorage.setItem(
+    'qraxsmm_utr',
+    utr
+  );
+
+
+  msg.style.color =
+    '#00ff88';
+
+  msg.textContent =
+    'UTR submitted successfully. Verification pending.';
+
+}
+
+
+/* NEW ORDER */
+
+function placeOrder(){
+
+  var service =
+    document
+      .getElementById('orderService')
+      .value;
+
+  var link =
+    document
+      .getElementById('orderLink')
+      .value
+      .trim();
+
+  var quantity =
+    document
+      .getElementById('orderQuantity')
+      .value;
+
+
+  var msg =
+    document
+      .getElementById('orderMsg');
+
+
+  if(!link || !quantity){
+
+    msg.style.color =
+      '#ff5555';
+
+    msg.textContent =
+      'Please enter link and quantity.';
+
+    return;
+
+  }
+
+
+  var orders =
+    JSON.parse(
+      localStorage.getItem(
+        'qraxsmm_orders'
+      ) || '[]'
+    );
+
+
+  orders.push({
+
+    id:Date.now(),
+
+    service:service,
+
+    link:link,
+
+    quantity:quantity,
+
+    status:'Pending'
+
+  });
+
+
+  localStorage.setItem(
+    'qraxsmm_orders',
+    JSON.stringify(orders)
+  );
+
+
+  msg.style.color =
+    '#00ff88';
+
+  msg.textContent =
+    'Order saved successfully.';
+
+
+  document
+    .getElementById('orderLink')
+    .value = '';
+
+
+  document
+    .getElementById('orderQuantity')
+    .value = '';
+
+
+  loadOrders();
+
+}
+
+
+/* LOAD ORDERS */
+
+function loadOrders(){
+
+  var orders =
+    JSON.parse(
+      localStorage.getItem(
+        'qraxsmm_orders'
+      ) || '[]'
+    );
+
+
+  var box =
+    document.getElementById(
+      'ordersList'
+    );
+
+
+  if(!orders.length){
+
+    box.innerHTML =
+      '<div style="color:#777;">No orders yet.</div>';
+
+    return;
+
+  }
+
+
+  box.innerHTML = '';
+
+
+  orders.forEach(function(order){
+
+    var div =
+      document.createElement('div');
+
+    div.className =
+      'order';
+
+
+    div.innerHTML =
+
+      '<div>' +
+
+      '<strong>' +
+      order.service +
+      '</strong>' +
+
+      '<div style="color:#777;font-size:12px;margin-top:5px;">' +
+
+      'Quantity: ' +
+      order.quantity +
+
+      '</div>' +
+
+      '</div>' +
+
+      '<div class="status">' +
+      order.status +
+      '</div>';
+
+
+    box.appendChild(div);
+
+  });
+
+}
+
+
+loadOrders();
+
 </script>
 
+
 <!-- QR CODE LIBRARY -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+</script>
 
 </body>
-          </html>
-
-
+      </html>
