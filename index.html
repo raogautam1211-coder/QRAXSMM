@@ -1,308 +1,714 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Qraxsmm — Premium SMM Panel</title>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,Arial;background:#050806;color:#effff5}
-button,input,select{font:inherit}
-:root{--g:#20ed75;--g2:#0fb957;--bg:#050806;--panel:#0a100d;--panel2:#0d1511;--line:#193122;--muted:#8da397}
-.app{display:flex;min-height:100vh}
-.side{width:245px;background:#07100b;border-right:1px solid var(--line);padding:25px 16px;position:fixed;inset:0 auto 0 0}
-.logo{font-size:25px;font-weight:900;padding:0 13px 28px}
-.logo i{color:var(--g);font-style:normal}
-.nav a{display:flex;gap:13px;align-items:center;padding:13px 14px;border-radius:10px;color:#9dafA4;text-decoration:none;margin:4px 0;font-size:14px}
-.nav a.active,.nav a:hover{background:#102219;color:#fff}
-.nav a.active{box-shadow:inset 3px 0 var(--g);color:var(--g)}
-.bottom{position:absolute;bottom:22px;left:16px;right:16px;background:#0b1710;border:1px solid var(--line);border-radius:14px;padding:15px}
-.bottom small{color:var(--muted)}
-.bottom b{display:block;margin:6px 0 12px}
-.main{margin-left:245px;width:calc(100% - 245px);padding:28px 34px}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
-.top h1{margin:0;font-size:25px}
-.top p{margin:5px 0 0;color:var(--muted);font-size:13px}
-.user{border:1px solid var(--line);padding:9px 13px;border-radius:11px;background:#0b120e;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.card{background:linear-gradient(145deg,#0c1510,#08100b);border:1px solid var(--line);border-radius:15px;padding:19px}
-.label{color:var(--muted);font-size:12px}
-.num{font-size:27px;font-weight:850;margin-top:8px}
-.up{color:var(--g);font-size:11px;margin-top:5px}
-.layout{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-top:16px}
-.title{font-size:16px;font-weight:750;margin-bottom:17px}
-.form{background:#0a110d;border:1px solid var(--line);border-radius:16px;padding:22px}
-.field{margin:12px 0}
-.field label{font-size:11px;color:var(--muted);display:block;margin-bottom:7px}
-.field input,.field select{width:100%;background:#060b08;color:#dfffea;border:1px solid #1a3324;border-radius:9px;padding:12px;outline:none}
-.field input:focus,.field select:focus{border-color:var(--g)}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.btn{border:0;background:var(--g);color:#031108;font-weight:850;padding:12px 17px;border-radius:9px;cursor:pointer}
-.btn:hover{filter:brightness(1.08)}
-.balance{font-size:37px;font-weight:900;margin:8px 0 18px}
-.mini{display:flex;justify-content:space-between;padding:13px 0;border-top:1px solid var(--line);font-size:12px}
-.mini span{color:var(--muted)}
-.table{margin-top:16px;background:#0a110d;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.thead,.tr{display:grid;grid-template-columns:1.4fr 1fr .7fr .7fr;padding:15px 18px;gap:10px;font-size:12px}
-.thead{color:var(--muted);background:#0d1611}
-.tr{border-top:1px solid #13251b}
-.status{color:var(--g)}
-.section{display:none}
-.section.active{display:block}
-.hero{padding:48px 10px 30px;display:grid;grid-template-columns:1.15fr .85fr;gap:35px;align-items:center}
-.tag{display:inline-block;color:#75f5aa;background:#0b2415;border:1px solid #1c5634;border-radius:99px;padding:8px 12px;font-size:11px;font-weight:800}
-.hero h2{font-size:clamp(42px,6vw,70px);line-height:1;letter-spacing:-3px;margin:18px 0}
-.hero h2 span{color:var(--g)}
-.hero p{color:var(--muted);line-height:1.7;max-width:560px}
-.actions{display:flex;gap:10px;margin-top:25px}
-.ghost{background:#0c1510;color:#d9f6e4;border:1px solid var(--line)}
-.notice{padding:15px;background:#0b2114;border:1px solid #19492d;border-radius:12px;color:#a9c7b5;font-size:12px;margin-bottom:15px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.service{padding:20px;border:1px solid var(--line);border-radius:14px;background:#0a110d}
-.service strong{display:block;margin-bottom:8px}
-.service span{color:var(--muted);font-size:12px}
-.service b{color:var(--g);display:block;margin-top:15px}
-@media(max-width:850px){
-.side{width:70px;padding:20px 9px}
-.logo{font-size:0;text-align:center}
-.logo i{font-size:23px}
-.nav a{justify-content:center;font-size:0}
-.nav a:first-letter{font-size:18px}
-.bottom{display:none}
-.main{margin-left:70px;width:calc(100% - 70px);padding:20px 15px}
-.grid{grid-template-columns:1fr 1fr}
-.layout,.hero{grid-template-columns:1fr}
-.cards{grid-template-columns:1fr}
-.hero{padding-top:25px}
-.hero h2{letter-spacing:-2px}
-.table{overflow:auto}
-.thead,.tr{min-width:600px}
-.top h1{font-size:20px}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
 }
-@media(max-width:480px){
-.grid{grid-template-columns:1fr}
-.row{grid-template-columns:1fr}
-.user{display:none}
-.main{padding:16px 10px}
+
+body{
+  background:#050505;
+  color:#fff;
+}
+
+.app{
+  display:flex;
+  min-height:100vh;
+}
+
+.sidebar{
+  width:240px;
+  background:#0b0b0b;
+  border-right:1px solid #1b1b1b;
+  padding:25px 15px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+  color:#fff;
+  margin-bottom:35px;
+  padding-left:10px;
+}
+
+.logo span{
+  color:#00ff88;
+}
+
+.nav button{
+  width:100%;
+  border:0;
+  background:transparent;
+  color:#aaa;
+  padding:14px 15px;
+  text-align:left;
+  border-radius:10px;
+  margin-bottom:7px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.nav button:hover,
+.nav button.active{
+  background:#10251b;
+  color:#00ff88;
+}
+
+.main{
+  flex:1;
+  padding:25px;
+  max-width:1200px;
+  margin:auto;
+  width:100%;
+}
+
+.topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
+}
+
+.topbar h1{
+  font-size:24px;
+}
+
+.balance{
+  background:#101010;
+  border:1px solid #1d1d1d;
+  padding:10px 16px;
+  border-radius:10px;
+}
+
+.balance span{
+  color:#00ff88;
+  font-weight:bold;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.card{
+  background:#0d0d0d;
+  border:1px solid #1d1d1d;
+  border-radius:16px;
+  padding:22px;
+  margin-bottom:20px;
+}
+
+.card h2{
+  margin-bottom:18px;
+  font-size:19px;
+}
+
+.hero{
+  background:linear-gradient(135deg,#0b2418,#080808);
+  border:1px solid #16452e;
+  padding:30px;
+  border-radius:18px;
+  margin-bottom:20px;
+}
+
+.hero h2{
+  color:#00ff88;
+  font-size:27px;
+  margin-bottom:10px;
+}
+
+.hero p{
+  color:#aaa;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.stat{
+  background:#0d0d0d;
+  border:1px solid #1d1d1d;
+  padding:20px;
+  border-radius:15px;
+}
+
+.stat small{
+  color:#888;
+}
+
+.stat strong{
+  display:block;
+  margin-top:8px;
+  font-size:22px;
+  color:#00ff88;
+}
+
+label{
+  display:block;
+  color:#aaa;
+  font-size:13px;
+  margin-bottom:7px;
+}
+
+input,
+select{
+  width:100%;
+  background:#080808;
+  border:1px solid #292929;
+  color:#fff;
+  padding:13px;
+  border-radius:9px;
+  outline:none;
+  margin-bottom:15px;
+}
+
+input:focus,
+select:focus{
+  border-color:#00ff88;
+}
+
+.btn{
+  border:0;
+  background:#00ff88;
+  color:#001b0d;
+  padding:13px 18px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn:hover{
+  opacity:.9;
+}
+
+.upi-box{
+  background:#07140e;
+  border:1px solid #16512f;
+  border-radius:15px;
+  padding:18px;
+  margin-bottom:18px;
+}
+
+.upi-id{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  background:#050505;
+  border:1px solid #222;
+  padding:13px;
+  border-radius:10px;
+  margin-top:8px;
+}
+
+.upi-id strong{
+  color:#00ff88;
+  word-break:break-all;
+}
+
+.copy-btn{
+  background:#00ff88;
+  color:#001b0d;
+  border:0;
+  padding:8px 12px;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.pay-btn{
+  width:100%;
+  margin-top:5px;
+  font-size:16px;
+  padding:15px;
+}
+
+.note{
+  color:#888;
+  font-size:12px;
+  line-height:1.6;
+  margin-top:15px;
+}
+
+#qrBox{
+  display:none;
+  margin-top:18px;
+  padding:18px;
+  background:#fff;
+  border-radius:14px;
+  text-align:center;
+}
+
+#upiQr{
+  display:flex;
+  justify-content:center;
+}
+
+#qrBox div{
+  color:#111;
+}
+
+.services{
+  display:grid;
+  gap:12px;
+}
+
+.service{
+  padding:16px;
+  border:1px solid #1d1d1d;
+  background:#0b0b0b;
+  border-radius:12px;
+}
+
+.service strong{
+  color:#00ff88;
+}
+
+.empty{
+  color:#777;
+  padding:20px 0;
+}
+
+@media(max-width:750px){
+  .sidebar{
+    width:70px;
+    padding:15px 8px;
+  }
+
+  .logo{
+    font-size:0;
+    text-align:center;
+    padding:0;
+  }
+
+  .logo:after{
+    content:"Q";
+    font-size:25px;
+    color:#00ff88;
+  }
+
+  .nav button{
+    text-align:center;
+    font-size:0;
+  }
+
+  .nav button:before{
+    content:"•";
+    font-size:22px;
+    color:#00ff88;
+  }
+
+  .main{
+    padding:15px;
+  }
+
+  .stats{
+    grid-template-columns:1fr;
+  }
+
+  .topbar{
+    align-items:flex-start;
+  }
+
+  .topbar h1{
+    font-size:20px;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <div class="app">
-<aside class="side">
-<div class="logo">Qrax<span>smm</span></div>
 
-<nav class="nav">
-<a href="#" class="active" data-page="home">⌂ <span>Dashboard</span></a>
-<a href="#" data-page="order">＋ <span>New Order</span></a>
-<a href="#" data-page="services">▦ <span>Services</span></a>
-<a href="#" data-page="orders">◷ <span>Orders</span></a>
-<a href="#" data-page="wallet">₹ <span>Add Funds</span></a>
-<a href="#" data-page="support">? <span>Support</span></a>
-</nav>
+  <aside class="sidebar">
+    <div class="logo">Qrax<span>smm</span></div>
 
-<div class="bottom">
-<small>Balance</small>
-<b>₹1,250.00</b>
-<button class="btn" style="width:100%" data-page="wallet">Add Funds</button>
-</div>
-</aside>
+    <div class="nav">
+      <button class="active" onclick="showPage('dashboard',this)">Dashboard</button>
+      <button onclick="showPage('order',this)">New Order</button>
+      <button onclick="showPage('services',this)">Services</button>
+      <button onclick="showPage('orders',this)">Orders</button>
+      <button onclick="showPage('funds',this)">Add Funds</button>
+      <button onclick="showPage('support',this)">Support</button>
+    </div>
+  </aside>
 
-<main class="main">
+  <main class="main">
 
-<section id="home" class="section active">
-<div class="top">
-<div>
-<h1>Welcome back, Rao 👋</h1>
-<p>Manage your social media orders from one place.</p>
-</div>
-<div class="user">● Online &nbsp; @qraxsmm</div>
-</div>
+    <div class="topbar">
+      <h1 id="pageTitle">Dashboard</h1>
+      <div class="balance">
+        Balance: <span>₹0.00</span>
+      </div>
+    </div>
 
-<div class="grid">
-<div class="card"><div class="label">Balance</div><div class="num">₹1,250</div><div class="up">Available</div></div>
-<div class="card"><div class="label">Total Orders</div><div class="num">1,284</div><div class="up">↑ 12.4% this month</div></div>
-<div class="card"><div class="label">Completed</div><div class="num">1,146</div><div class="up">89.2% completion</div></div>
-<div class="card"><div class="label">In Progress</div><div class="num">138</div><div class="up">Live tracking</div></div>
-</div>
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="page active">
 
-<div class="layout">
-<div class="form">
-<div class="title">Quick Order</div>
-<div class="field">
-<label>SERVICE</label>
-<select>
-<option>Instagram Followers — Premium</option>
-<option>Instagram Likes — Fast</option>
-<option>YouTube Views — High Retention</option>
-</select>
-</div>
-<div class="field"><label>LINK</label><input placeholder="https://instagram.com/yourprofile"></div>
-<div class="row">
-<div class="field"><label>QUANTITY</label><input value="1000"></div>
-<div class="field"><label>ESTIMATED PRICE</label><input value="₹19.00" readonly></div>
-</div>
-<button class="btn">Place Order →</button>
-</div>
+      <div class="hero">
+        <h2>Welcome to Qraxsmm</h2>
+        <p>Premium Social Media Marketing Panel</p>
+      </div>
 
-<div class="card">
-<div class="title">Account</div>
-<div class="balance">₹1,250</div>
-<div class="mini"><span>Username</span><b>@qraxsmm</b></div>
-<div class="mini"><span>Orders</span><b>1,284</b></div>
-<div class="mini"><span>Support</span><b style="color:var(--g)">Online</b></div>
-</div>
-</div>
-</section>
+      <div class="stats">
+        <div class="stat">
+          <small>Balance</small>
+          <strong>₹0.00</strong>
+        </div>
 
-<section id="order" class="section">
-<div class="top"><div><h1>New Order</h1><p>Choose a service and place your order.</p></div></div>
-<div class="form" style="max-width:800px">
-<div class="field"><label>SERVICE</label>
-<select>
-<option>Instagram Followers — Premium</option>
-<option>Instagram Likes — Fast</option>
-<option>YouTube Views — High Retention</option>
-<option>TikTok Followers — Premium</option>
-</select>
-</div>
-<div class="field"><label>LINK</label><input placeholder="Paste your profile/post link"></div>
-<div class="row">
-<div class="field"><label>QUANTITY</label><input placeholder="1000"></div>
-<div class="field"><label>PRICE</label><input value="₹19.00" readonly></div>
-</div>
-<div class="notice">✓ Please make sure your link is correct before placing an order.</div>
-<button class="btn">Place Order</button>
-</div>
-</section>
+        <div class="stat">
+          <small>Total Orders</small>
+          <strong>0</strong>
+        </div>
 
-<section id="services" class="section">
-<div class="top"><div><h1>Services</h1><p>Browse available categories and pricing.</p></div></div>
-<div class="cards">
-<div class="service"><strong>Instagram Followers</strong><span>Premium • Fast start • Refill</span><b>From ₹19 / 1K</b></div>
-<div class="service"><strong>Instagram Likes</strong><span>High quality • Fast delivery</span><b>From ₹9 / 1K</b></div>
-<div class="service"><strong>Instagram Views</strong><span>Fast • Stable delivery</span><b>From ₹5 / 1K</b></div>
-<div class="service"><strong>YouTube Views</strong><span>High retention options</span><b>From ₹29 / 1K</b></div>
-<div class="service"><strong>TikTok Followers</strong><span>Premium delivery</span><b>From ₹25 / 1K</b></div>
-<div class="service"><strong>Telegram Members</strong><span>Fast delivery</span><b>From ₹35 / 1K</b></div>
-</div>
-</section>
+        <div class="stat">
+          <small>Completed</small>
+          <strong>0</strong>
+        </div>
+      </div>
 
-<section id="orders" class="section">
-<div class="top"><div><h1>Orders</h1><p>Track your recent orders.</p></div></div>
-<div class="table">
-<div class="thead"><span>ID</span><span>Service</span><span>Qty</span><span>Status</span></div>
-<div class="tr"><span>#QX1284</span><span>Instagram Followers</span><span>1,000</span><span class="status">Completed</span></div>
-<div class="tr"><span>#QX1283</span><span>YouTube Views</span><span>5,000</span><span class="status">Processing</span></div>
-<div class="tr"><span>#QX1282</span><span>Instagram Likes</span><span>2,000</span><span class="status">Completed</span></div>
-</div>
-</section>
+    </section>
 
-<section id="wallet" class="section">
-<div class="top">
-<div><h1>Add Funds</h1><p>Top up your Qraxsmm balance securely with UPI.</p></div>
-</div>
+    <!-- NEW ORDER -->
+    <section id="order" class="page">
 
-<div class="layout">
-<div class="form">
-<div class="title">UPI Payment</div>
+      <div class="card">
+        <h2>New Order</h2>
 
-<div class="notice">
-✓ Send your chosen amount to the UPI ID below, then keep your UTR / transaction ID for verification.
-</div>
+        <label>Select Service</label>
+        <select>
+          <option>Instagram Followers</option>
+          <option>Instagram Likes</option>
+          <option>Instagram Views</option>
+          <option>YouTube Views</option>
+          <option>YouTube Subscribers</option>
+        </select>
 
-<div class="field">
-<label>AMOUNT (INR)</label>
-<input id="upiAmount" type="number" min="50" max="50000" placeholder="Enter amount">
-</div>
+        <label>Link</label>
+        <input type="text" placeholder="Enter post/profile link">
 
-<div class="field">
-<label>UPI ID</label>
-<div style="display:flex;gap:8px">
-<input id="upiId" value="raogautam1211@oksbi" readonly>
-<button class="btn" type="button" onclick="copyUpi()" style="white-space:nowrap">Copy</button>
-</div>
-</div>
+        <label>Quantity</label>
+        <input type="number" placeholder="Enter quantity">
 
-<div class="actions" style="margin-top:15px">
-<button class="btn" type="button" onclick="payViaUpi()">Pay via UPI →</button>
-</div>
+        <button class="btn">Place Order</button>
+      </div>
 
-<div id="copyMsg" style="color:var(--g);font-size:11px;margin-top:10px"></div>
+    </section>
 
-<p style="color:var(--muted);font-size:11px;line-height:1.6;margin-top:16px">
-Minimum ₹50 • Maximum ₹50,000<br>
-After payment, submit your transaction/UTR to support for manual balance verification.
-</p>
-</div>
+    <!-- SERVICES -->
+    <section id="services" class="page">
 
-<div class="card">
-<div class="label">Current Balance</div>
-<div class="balance">₹1,250</div>
-<div class="mini"><span>Payment</span><b style="color:var(--g)">UPI</b></div>
-<div class="mini"><span>Minimum</span><b>₹50</b></div>
-<div class="mini"><span>Maximum</span><b>₹50,000</b></div>
-</div>
-</div>
-</section>
+      <div class="card">
+        <h2>Services</h2>
 
-<section id="support" class="section">
-<div class="top"><div><h1>Support</h1><p>Need help? Create a support ticket.</p></div></div>
-<div class="form" style="max-width:800px">
-<div class="field"><label>SUBJECT</label><input placeholder="What do you need help with?"></div>
-<div class="field"><label>MESSAGE</label><input style="height:120px" placeholder="Describe your issue..."></div>
-<button class="btn">Create Ticket</button>
-</div>
-</section>
+        <div class="services">
 
-</main>
+          <div class="service">
+            <strong>Instagram Followers</strong>
+            <p>Premium quality Instagram followers.</p>
+          </div>
+
+          <div class="service">
+            <strong>Instagram Likes</strong>
+            <p>Fast Instagram likes for your posts.</p>
+          </div>
+
+          <div class="service">
+            <strong>Instagram Views</strong>
+            <p>High quality Instagram video views.</p>
+          </div>
+
+          <div class="service">
+            <strong>YouTube Views</strong>
+            <p>Boost your YouTube video views.</p>
+          </div>
+
+          <div class="service">
+            <strong>YouTube Subscribers</strong>
+            <p>Grow your YouTube channel.</p>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ORDERS -->
+    <section id="orders" class="page">
+
+      <div class="card">
+        <h2>Orders</h2>
+        <div class="empty">No orders found.</div>
+      </div>
+
+    </section>
+
+    <!-- ADD FUNDS -->
+    <section id="funds" class="page">
+
+      <div class="card">
+
+        <h2>💳 Add Funds</h2>
+
+        <div class="upi-box">
+
+          <div style="font-size:13px;color:#aaa;">
+            Pay securely using UPI
+          </div>
+
+          <div class="upi-id">
+            <strong id="upiId">raogautam1211@oksbi</strong>
+
+            <button class="copy-btn" onclick="copyUpi()">
+              Copy
+            </button>
+          </div>
+
+          <div id="copyMsg"
+               style="font-size:12px;color:#00ff88;margin-top:8px;">
+          </div>
+
+        </div>
+
+        <label>Enter Amount</label>
+
+        <input
+          type="number"
+          id="amount"
+          min="50"
+          max="50000"
+          placeholder="Minimum ₹50"
+        >
+
+        <button class="btn pay-btn" onclick="payViaUpi()">
+          💳 Pay via UPI
+        </button>
+
+        <!-- QR CODE -->
+        <div id="qrBox">
+
+          <div id="upiQr"></div>
+
+          <div style="
+            font-size:13px;
+            font-weight:bold;
+            margin-top:10px;
+          ">
+            Scan this QR with your UPI phone
+          </div>
+
+          <div
+            id="qrAmount"
+            style="
+              font-size:12px;
+              margin-top:5px;
+            ">
+          </div>
+
+        </div>
+
+        <div class="note">
+          Minimum amount: ₹50<br>
+          Maximum amount: ₹50,000<br><br>
+
+          Agar UPI app automatically open na ho,
+          QR code ko apne second phone se scan karein.
+          Payment ke baad UTR/Transaction ID save rakhein
+          verification ke liye.
+        </div>
+
+      </div>
+
+      <div class="card">
+        <h2>Current Balance</h2>
+
+        <div style="
+          font-size:30px;
+          color:#00ff88;
+          font-weight:bold;
+        ">
+          ₹0.00
+        </div>
+      </div>
+
+    </section>
+
+    <!-- SUPPORT -->
+    <section id="support" class="page">
+
+      <div class="card">
+        <h2>Support</h2>
+
+        <p style="color:#aaa;line-height:1.7;">
+          Payment ya order se related help ke liye
+          support se contact karein.
+        </p>
+
+      </div>
+
+    </section>
+
+  </main>
+
 </div>
 
 <script>
-const links=document.querySelectorAll('[data-page]');
-const sections=document.querySelectorAll('.section');
 
-links.forEach(x=>x.addEventListener('click',e=>{
-e.preventDefault();
-let p=x.dataset.page;
-if(!p)return;
-sections.forEach(s=>s.classList.toggle('active',s.id===p));
-document.querySelectorAll('.nav a').forEach(a=>a.classList.toggle('active',a.dataset.page===p));
-window.scrollTo({top:0,behavior:'smooth'});
-}));
+function showPage(pageId,button){
+
+  document.querySelectorAll('.page')
+    .forEach(function(page){
+      page.classList.remove('active');
+    });
+
+  document.getElementById(pageId)
+    .classList.add('active');
+
+  document.querySelectorAll('.nav button')
+    .forEach(function(btn){
+      btn.classList.remove('active');
+    });
+
+  button.classList.add('active');
+
+  var titles = {
+    dashboard:'Dashboard',
+    order:'New Order',
+    services:'Services',
+    orders:'Orders',
+    funds:'Add Funds',
+    support:'Support'
+  };
+
+  document.getElementById('pageTitle')
+    .textContent = titles[pageId];
+}
+
 
 function copyUpi(){
-const id=document.getElementById('upiId').value;
-navigator.clipboard.writeText(id).then(()=>{
-document.getElementById('copyMsg').textContent='UPI ID copied ✓';
-setTimeout(()=>document.getElementById('copyMsg').textContent='',1800);
-}).catch(()=>{
-document.getElementById('upiId').select();
-document.execCommand('copy');
-document.getElementById('copyMsg').textContent='UPI ID copied ✓';
-});
+
+  var upi = 'raogautam1211@oksbi';
+
+  navigator.clipboard.writeText(upi)
+    .then(function(){
+
+      document.getElementById('copyMsg')
+        .textContent = 'UPI ID copied!';
+
+    })
+    .catch(function(){
+
+      var temp = document.createElement('textarea');
+      temp.value = upi;
+
+      document.body.appendChild(temp);
+      temp.select();
+
+      document.execCommand('copy');
+
+      document.body.removeChild(temp);
+
+      document.getElementById('copyMsg')
+        .textContent = 'UPI ID copied!';
+
+    });
 }
+
 
 function payViaUpi(){
-const amount=document.getElementById('upiAmount').value;
 
-if(!amount || Number(amount)<50 || Number(amount)>50000){
-document.getElementById('copyMsg').textContent='Please enter an amount between ₹50 and ₹50,000.';
-return;
+  var amount =
+    document.getElementById('amount').value;
+
+  amount = Number(amount);
+
+  if(!amount || amount < 50){
+
+    alert('Minimum amount ₹50 hai.');
+
+    return;
+  }
+
+  if(amount > 50000){
+
+    alert('Maximum amount ₹50,000 hai.');
+
+    return;
+  }
+
+  var upiId = 'raogautam1211@oksbi';
+
+  var url =
+    'upi://pay?pa=' +
+    encodeURIComponent(upiId) +
+    '&pn=' +
+    encodeURIComponent('Qraxsmm') +
+    '&am=' +
+    amount.toFixed(2) +
+    '&cu=INR' +
+    '&tn=' +
+    encodeURIComponent('Qraxsmm Add Funds');
+
+  /* QR BOX SHOW */
+
+  document.getElementById('qrBox')
+    .style.display = 'block';
+
+  document.getElementById('qrAmount')
+    .textContent =
+    'Amount: ₹' + amount.toFixed(2);
+
+  document.getElementById('upiQr')
+    .innerHTML = '';
+
+  /* GENERATE QR */
+
+  if(window.QRCode){
+
+    new QRCode(
+      document.getElementById('upiQr'),
+      {
+        text:url,
+        width:210,
+        height:210
+      }
+    );
+
+  }
+
+  document.getElementById('copyMsg')
+    .textContent =
+    'QR code generated. Scan it from your UPI phone.';
+
+  /* TRY OPENING UPI APP */
+
+  try{
+
+    window.location.href = url;
+
+  }catch(e){}
+
 }
 
-const upi='raogautam1211@oksbi';
-
-const url='upi://pay?pa='+
-encodeURIComponent(upi)+
-'&pn='+encodeURIComponent('Qraxsmm')+
-'&am='+encodeURIComponent(Number(amount).toFixed(2))+
-'&cu=INR';
-
-window.location.href=url;
-}
 </script>
 
+<!-- QR CODE LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
 </body>
-                                           </html>
+</html>
+
+
