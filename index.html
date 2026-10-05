@@ -1,65 +1,438 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Qraxsmm — Premium SMM Panel</title>
 
+<style>
+*{box-sizing:border-box}
 
-  
+body{
+margin:0;
+font-family:Inter,system-ui,Arial;
+background:#050806;
+color:#effff5
+}
 
-  
-@media(max-width:750px){
+button,input,select{font:inherit}
 
-  .sidebar{
-    width:70px;
-    padding:20px 8px;
-  }
+:root{
+--g:#20ed75;
+--g2:#0fb957;
+--bg:#050806;
+--panel:#0a100d;
+--panel2:#0d1511;
+--line:#193122;
+--muted:#8da397
+}
 
-  .logo{
-    font-size:0;
-    text-align:center;
-    padding:0;
-  }
+.app{display:flex;min-height:100vh}
 
-  .logo:after{
-    content:"Q";
-    color:var(--green);
-    font-size:28px;
-    font-weight:bold;
-  }
+.side{
+width:245px;
+background:#07100b;
+border-right:1px solid var(--line);
+padding:25px 16px;
+position:fixed;
+inset:0 auto 0 0
+}
 
-  .nav button{
-    font-size:0;
-    text-align:center;
-  }
+.logo{
+font-size:25px;
+font-weight:900;
+padding:0 13px 28px
+}
 
-  .nav button:before{
-    content:"●";
-    font-size:15px;
-    color:var(--green);
-  }
+.logo span{color:var(--g)}
 
-  .main{
-    margin-left:70px;
-    width:calc(100% - 70px);
-    padding:15px;
-  }
+.nav a{
+display:flex;
+gap:13px;
+align-items:center;
+padding:13px 14px;
+border-radius:10px;
+color:#9dafA4;
+text-decoration:none;
+margin:4px 0;
+font-size:14px
+}
 
-  .topbar{
-    gap:10px;
-  }
+.nav a.active,
+.nav a:hover{
+background:#102219;
+color:#fff
+}
 
-  .topbar h1{
-    font-size:21px;
-  }
+.nav a.active{
+box-shadow:inset 3px 0 var(--g);
+color:var(--g)
+}
 
-  .balance{
-    font-size:13px;
-    padding:10px;
-  }
+.bottom{
+position:absolute;
+bottom:22px;
+left:16px;
+right:16px;
+background:#0b1710;
+border:1px solid var(--line);
+border-radius:14px;
+padding:15px
+}
 
-  .stats{
-    grid-template-columns:1fr;
-  }
+.bottom small{color:var(--muted)}
 
-  .upi-row{
-    align-items:flex-start;
-  }
+.bottom b{
+display:block;
+margin:6px 0 12px
+}
+
+.main{
+margin-left:245px;
+width:calc(100% - 245px);
+padding:28px 34px
+}
+
+.top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:28px
+}
+
+.top h1{
+margin:0;
+font-size:25px
+}
+
+.top p{
+margin:5px 0 0;
+color:var(--muted);
+font-size:13px
+}
+
+.user{
+border:1px solid var(--line);
+padding:9px 13px;
+border-radius:11px;
+background:#0b120e;
+font-size:13px
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:14px
+}
+
+.card{
+background:linear-gradient(145deg,#0c1510,#08100b);
+border:1px solid var(--line);
+border-radius:15px;
+padding:19px
+}
+
+.label{
+color:var(--muted);
+font-size:12px
+}
+
+.num{
+font-size:27px;
+font-weight:850;
+margin-top:8px
+}
+
+.up{
+color:var(--g);
+font-size:11px;
+margin-top:5px
+}
+
+.layout{
+display:grid;
+grid-template-columns:1.35fr .65fr;
+gap:16px;
+margin-top:16px
+}
+
+.title{
+font-size:16px;
+font-weight:750;
+margin-bottom:17px
+}
+
+.form{
+background:#0a110d;
+border:1px solid var(--line);
+border-radius:16px;
+padding:22px
+}
+
+.field{margin:12px 0}
+
+.field label{
+font-size:11px;
+color:var(--muted);
+display:block;
+margin-bottom:7px
+}
+
+.field input,
+.field select{
+width:100%;
+background:#060b08;
+color:#dfffea;
+border:1px solid #1a3324;
+border-radius:9px;
+padding:12px;
+outline:none
+}
+
+.field input:focus,
+.field select:focus{
+border-color:var(--g)
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px
+}
+
+.btn{
+border:0;
+background:var(--g);
+color:#031108;
+font-weight:850;
+padding:12px 17px;
+border-radius:9px;
+cursor:pointer
+}
+
+.btn:hover{filter:brightness(1.08)}
+
+.balance{
+font-size:37px;
+font-weight:900;
+margin:8px 0 18px
+}
+
+.mini{
+display:flex;
+justify-content:space-between;
+padding:13px 0;
+border-top:1px solid var(--line);
+font-size:12px
+}
+
+.mini span{color:var(--muted)}
+
+.table{
+margin-top:16px;
+background:#0a110d;
+border:1px solid var(--line);
+border-radius:16px;
+overflow:hidden
+}
+
+.thead,
+.tr{
+display:grid;
+grid-template-columns:1.4fr 1fr .7fr .7fr;
+padding:15px 18px;
+gap:10px;
+font-size:12px
+}
+
+.thead{
+color:var(--muted);
+background:#0d1611
+}
+
+.tr{border-top:1px solid #13251b}
+
+.status{color:var(--g)}
+
+.section{display:none}
+
+.section.active{display:block}
+
+.hero{
+padding:48px 10px 30px;
+display:grid;
+grid-template-columns:1.15fr .85fr;
+gap:35px;
+align-items:center
+}
+
+.tag{
+display:inline-block;
+color:#75f5aa;
+background:#0b2415;
+border:1px solid #1c5634;
+border-radius:99px;
+padding:8px 12px;
+font-size:11px;
+font-weight:800
+}
+
+.hero h2{
+font-size:clamp(42px,6vw,70px);
+line-height:1;
+letter-spacing:-3px;
+margin:18px 0
+}
+
+.hero h2 span{color:var(--g)}
+
+.hero p{
+color:var(--muted);
+line-height:1.7;
+max-width:560px
+}
+
+.actions{
+display:flex;
+gap:10px;
+margin-top:25px
+}
+
+.ghost{
+background:#0c1510;
+color:#d9f6e4;
+border:1px solid var(--line)
+}
+
+.notice{
+padding:15px;
+background:#0b2114;
+border:1px solid #19492d;
+border-radius:12px;
+color:#a9c7b5;
+font-size:12px;
+margin-bottom:15px
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:15px
+}
+
+.service{
+padding:20px;
+border:1px solid var(--line);
+border-radius:14px;
+background:#0a110d
+}
+
+.service strong{
+display:block;
+margin-bottom:8px
+}
+
+.service span{
+color:var(--muted);
+font-size:12px
+}
+
+.service b{
+color:var(--g);
+display:block;
+margin-top:15px
+}
+
+@media(max-width:850px){
+
+.side{
+width:70px;
+padding:20px 9px
+}
+
+.logo{
+font-size:0;
+text-align:center
+}
+
+.logo:before{
+content:"Q";
+font-size:23px;
+color:var(--g);
+font-weight:900
+}
+
+.nav a{
+justify-content:center;
+font-size:0
+}
+
+.nav a:first-letter{
+font-size:18px
+}
+
+.bottom{display:none}
+
+.main{
+margin-left:70px;
+width:calc(100% - 70px);
+padding:20px 15px
+}
+
+.grid{
+grid-template-columns:1fr 1fr
+}
+
+.layout,
+.hero{
+grid-template-columns:1fr
+}
+
+.cards{
+grid-template-columns:1fr
+}
+
+.hero{
+padding-top:25px
+}
+
+.hero h2{
+letter-spacing:-2px
+}
+
+.table{
+overflow:auto
+}
+
+.thead,
+.tr{
+min-width:600px
+}
+
+.top h1{
+font-size:20px
+}
+
+}
+
+@media(max-width:480px){
+
+.grid{
+grid-template-columns:1fr
+}
+
+.row{
+grid-template-columns:1fr
+}
+
+.user{
+display:none
+}
+
+.main{
+padding:16px 10px
+}
+
 }
 </style>
 </head>
@@ -68,385 +441,551 @@
 
 <div class="app">
 
-<!-- SIDEBAR -->
+<aside class="side">
 
-<aside class="sidebar">
+<div class="logo">Qrax<span>smm</span></div>
 
-  <div class="logo">
-    Qrax<span>smm</span>
-  </div>
+<nav class="nav">
 
-  <div class="nav">
+<a href="#" class="active" data-page="home">
+⌂ <span>Dashboard</span>
+</a>
 
-    <button class="active"
-      onclick="showPage('dashboard',this)">
-      Dashboard
-    </button>
+<a href="#" data-page="order">
+＋ <span>New Order</span>
+</a>
 
-    <button onclick="showPage('order',this)">
-      New Order
-    </button>
+<a href="#" data-page="services">
+▦ <span>Services</span>
+</a>
 
-    <button onclick="showPage('services',this)">
-      Services
-    </button>
+<a href="#" data-page="orders">
+◷ <span>Orders</span>
+</a>
 
-    <button onclick="showPage('orders',this)">
-      Orders
-    </button>
+<a href="#" data-page="wallet">
+₹ <span>Add Funds</span>
+</a>
 
-    <button onclick="showPage('funds',this)">
-      Add Funds
-    </button>
+<a href="#" data-page="support">
+? <span>Support</span>
+</a>
 
-    <button onclick="showPage('support',this)">
-      Support
-    </button>
+</nav>
 
-  </div>
+<div class="bottom">
+
+<small>Balance</small>
+
+<b>₹1,250.00</b>
+
+<button class="btn"
+style="width:100%"
+data-page="wallet">
+Add Funds
+</button>
+
+</div>
 
 </aside>
 
 
-<!-- MAIN -->
-
 <main class="main">
 
-  <div class="topbar">
 
-    <h1 id="pageTitle">
-      Dashboard
-    </h1>
+<section id="home" class="section active">
 
-    <div class="balance">
-      Balance:
-      <span>₹0.00</span>
-    </div>
+<div class="top">
 
-  </div>
+<div>
+<h1>Welcome back, Rao 👋</h1>
+<p>Manage your social media orders from one place.</p>
+</div>
 
+<div class="user">
+● Online &nbsp; @qraxsmm
+</div>
 
-<!-- DASHBOARD -->
-
-<section id="dashboard" class="page active">
-
-  <div class="hero">
-
-    <h2>
-      Welcome to Qraxsmm
-    </h2>
-
-    <p>
-      Premium Social Media Marketing Panel
-    </p>
-
-  </div>
-
-  <div class="stats">
-
-    <div class="stat">
-      <small>Wallet Balance</small>
-      <strong>₹0.00</strong>
-    </div>
-
-    <div class="stat">
-      <small>Total Orders</small>
-      <strong>0</strong>
-    </div>
-
-    <div class="stat">
-      <small>Completed</small>
-      <strong>0</strong>
-    </div>
-
-  </div>
-
-</section>
+</div>
 
 
-<!-- NEW ORDER -->
+<div class="grid">
 
-<section id="order" class="page">
+<div class="card">
+<div class="label">Balance</div>
+<div class="num">₹1,250</div>
+<div class="up">Available</div>
+</div>
 
-  <div class="card">
+<div class="card">
+<div class="label">Total Orders</div>
+<div class="num">1,284</div>
+<div class="up">↑ 12.4% this month</div>
+</div>
 
-    <h2>🛒 New Order</h2>
+<div class="card">
+<div class="label">Completed</div>
+<div class="num">1,146</div>
+<div class="up">89.2% completion</div>
+</div>
 
-    <label>Select Service</label>
+<div class="card">
+<div class="label">In Progress</div>
+<div class="num">138</div>
+<div class="up">Live tracking</div>
+</div>
 
-    <select id="orderService">
-
-      <option>Instagram Followers</option>
-      <option>Instagram Likes</option>
-      <option>Instagram Views</option>
-      <option>YouTube Views</option>
-      <option>YouTube Subscribers</option>
-
-    </select>
-
-    <label>Link</label>
-
-    <input
-      id="orderLink"
-      type="url"
-      placeholder="Enter post/profile link"
-    >
-
-    <label>Quantity</label>
-
-    <input
-      id="orderQuantity"
-      type="number"
-      placeholder="Enter quantity"
-    >
-
-    <button class="btn"
-      onclick="placeOrder()">
-      Place Order
-    </button>
-
-    <div id="orderMsg"></div>
-
-  </div>
-
-</section>
+</div>
 
 
-<!-- SERVICES -->
+<div class="layout">
 
-<section id="services" class="page">
+<div class="form">
 
-  <div class="card">
+<div class="title">Quick Order</div>
 
-    <h2>📦 Services</h2>
+<div class="field">
 
-    <div class="service">
-      <strong>Instagram Followers</strong>
-      <p>Premium Instagram followers.</p>
-    </div>
+<label>SERVICE</label>
 
-    <div class="service">
-      <strong>Instagram Likes</strong>
-      <p>Fast Instagram likes.</p>
-    </div>
+<select>
 
-    <div class="service">
-      <strong>Instagram Views</strong>
-      <p>Instagram video views.</p>
-    </div>
+<option>Instagram Followers — Premium</option>
 
-    <div class="service">
-      <strong>YouTube Views</strong>
-      <p>YouTube video views.</p>
-    </div>
+<option>Instagram Likes — Fast</option>
 
-    <div class="service">
-      <strong>YouTube Subscribers</strong>
-      <p>YouTube channel subscribers.</p>
-    </div>
+<option>YouTube Views — High Retention</option>
 
-  </div>
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>LINK</label>
+
+<input placeholder="https://instagram.com/yourprofile">
+
+</div>
+
+
+<div class="row">
+
+<div class="field">
+
+<label>QUANTITY</label>
+
+<input value="1000">
+
+</div>
+
+<div class="field">
+
+<label>ESTIMATED PRICE</label>
+
+<input value="₹19.00" readonly>
+
+</div>
+
+</div>
+
+<button class="btn">
+Place Order →
+</button>
+
+</div>
+
+
+<div class="card">
+
+<div class="title">Account</div>
+
+<div class="balance">₹1,250</div>
+
+<div class="mini">
+<span>Username</span>
+<b>@qraxsmm</b>
+</div>
+
+<div class="mini">
+<span>Orders</span>
+<b>1,284</b>
+</div>
+
+<div class="mini">
+<span>Support</span>
+<b style="color:var(--g)">Online</b>
+</div>
+
+</div>
+
+</div>
 
 </section>
 
 
-<!-- ORDERS -->
 
-<section id="orders" class="page">
+<section id="order" class="section">
 
-  <div class="card">
+<div class="top">
 
-    <h2>📋 Orders</h2>
+<div>
+<h1>New Order</h1>
+<p>Choose a service and place your order.</p>
+</div>
 
-    <div id="ordersList">
-      <div style="color:#777;">
-        No orders yet.
-      </div>
-    </div>
+</div>
 
-  </div>
+<div class="form" style="max-width:800px">
 
-</section>
+<div class="field">
 
+<label>SERVICE</label>
 
-<!-- ADD FUNDS -->
+<select>
 
-<section id="funds" class="page">
+<option>Instagram Followers — Premium</option>
+<option>Instagram Likes — Fast</option>
+<option>YouTube Views — High Retention</option>
+<option>TikTok Followers — Premium</option>
 
-  <div class="card">
+</select>
 
-    <h2>💳 Add Funds</h2>
+</div>
 
+<div class="field">
 
-    <!-- UPI ID -->
+<label>LINK</label>
 
-    <div class="upi-box">
+<input placeholder="Paste your profile/post link">
 
-      <div class="upi-title">
-        Pay securely using UPI
-      </div>
+</div>
 
-      <div class="upi-row">
+<div class="row">
 
-        <strong id="upiId">
-          raogautam1211@oksbi
-        </strong>
+<div class="field">
 
-        <button
-          class="copy-btn"
-          onclick="copyUpi()">
-          Copy
-        </button>
+<label>QUANTITY</label>
 
-      </div>
+<input placeholder="1000">
 
-      <div id="copyMsg"></div>
+</div>
 
-    </div>
+<div class="field">
 
+<label>PRICE</label>
 
-    <!-- AMOUNT -->
+<input value="₹19.00" readonly>
 
-    <label>
-      Enter Amount
-    </label>
+</div>
 
-    <input
-      id="amount"
-      type="number"
-      min="50"
-      max="50000"
-      placeholder="Minimum ₹50"
-    >
+</div>
 
+<div class="notice">
+✓ Please make sure your link is correct before placing an order.
+</div>
 
-    <!-- PAY BUTTON -->
+<button class="btn">
+Place Order
+</button>
 
-    <button
-      class="btn pay-btn"
-      onclick="payViaUpi()">
-
-      💳 Pay via UPI
-
-    </button>
-
-
-    <!-- QR CODE -->
-
-    <div id="qrBox">
-
-      <div id="upiQr"></div>
-
-      <div class="qr-title">
-        Scan this QR with your UPI phone
-      </div>
-
-      <div id="qrAmount"></div>
-
-    </div>
-
-
-    <div style="
-      color:#888;
-      font-size:12px;
-      line-height:1.7;
-      margin-top:17px;
-    ">
-
-      Minimum amount: ₹50<br>
-      Maximum amount: ₹50,000<br><br>
-
-      Agar UPI app automatically open na ho,
-      QR code ko apne second phone se scan karein.
-
-    </div>
-
-
-    <!-- UTR SECTION -->
-    <!-- YE QR KE TURANT BAAD HAI -->
-
-    <div class="utr-card">
-
-      <h2>
-        ✅ Payment Verification
-      </h2>
-
-      <div class="utr-info">
-
-        Payment complete karne ke baad
-        apna UTR / Transaction ID yahan
-        enter karein.
-
-      </div>
-
-      <label>
-        UTR / Transaction ID
-      </label>
-
-      <input
-        id="utr"
-        type="text"
-        maxlength="30"
-        placeholder="Enter UTR / Transaction ID"
-      >
-
-      <button
-        class="btn"
-        onclick="submitUTR()">
-
-        Submit Payment
-
-      </button>
-
-      <div id="utrMsg"></div>
-
-    </div>
-
-  </div>
-
-
-  <!-- CURRENT BALANCE -->
-
-  <div class="card">
-
-    <h2>
-      Current Balance
-    </h2>
-
-    <div style="
-      font-size:30px;
-      color:var(--green);
-      font-weight:bold;
-    ">
-      ₹0.00
-    </div>
-
-  </div>
+</div>
 
 </section>
 
 
-<!-- SUPPORT -->
 
-<section id="support" class="page">
+<section id="services" class="section">
 
-  <div class="card">
+<div class="top">
 
-    <h2>🎧 Support</h2>
+<div>
+<h1>Services</h1>
+<p>Browse available categories and pricing.</p>
+</div>
 
-    <p style="
-      color:#888;
-      line-height:1.7;
-    ">
+</div>
 
-      Payment ya order se related help ke liye
-      support se contact karein.
+<div class="cards">
 
-    </p>
+<div class="service">
+<strong>Instagram Followers</strong>
+<span>Premium • Fast start • Refill</span>
+<b>From ₹19 / 1K</b>
+</div>
 
-  </div>
+<div class="service">
+<strong>Instagram Likes</strong>
+<span>High quality • Fast delivery</span>
+<b>From ₹9 / 1K</b>
+</div>
+
+<div class="service">
+<strong>Instagram Views</strong>
+<span>Fast • Stable delivery</span>
+<b>From ₹5 / 1K</b>
+</div>
+
+<div class="service">
+<strong>YouTube Views</strong>
+<span>High retention options</span>
+<b>From ₹29 / 1K</b>
+</div>
+
+<div class="service">
+<strong>TikTok Followers</strong>
+<span>Premium delivery</span>
+<b>From ₹25 / 1K</b>
+</div>
+
+<div class="service">
+<strong>Telegram Members</strong>
+<span>Fast delivery</span>
+<b>From ₹35 / 1K</b>
+</div>
+
+</div>
 
 </section>
+
+
+
+<section id="orders" class="section">
+
+<div class="top">
+
+<div>
+<h1>Orders</h1>
+<p>Track your recent orders.</p>
+</div>
+
+</div>
+
+<div class="table">
+
+<div class="thead">
+<span>ID</span>
+<span>Service</span>
+<span>Qty</span>
+<span>Status</span>
+</div>
+
+<div class="tr">
+<span>#QX1284</span>
+<span>Instagram Followers</span>
+<span>1,000</span>
+<span class="status">Completed</span>
+</div>
+
+<div class="tr">
+<span>#QX1283</span>
+<span>YouTube Views</span>
+<span>5,000</span>
+<span class="status">Processing</span>
+</div>
+
+<div class="tr">
+<span>#QX1282</span>
+<span>Instagram Likes</span>
+<span>2,000</span>
+<span class="status">Completed</span>
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="wallet" class="section">
+
+<div class="top">
+
+<div>
+<h1>Add Funds</h1>
+<p>Top up your Qraxsmm balance securely with UPI.</p>
+</div>
+
+</div>
+
+
+<div class="layout">
+
+
+<div class="form">
+
+<div class="title">UPI Payment</div>
+
+<div class="notice">
+✓ Send your chosen amount to the UPI ID below, then keep your UTR / transaction ID for verification.
+</div>
+
+
+<div class="field">
+
+<label>AMOUNT (INR)</label>
+
+<input
+id="upiAmount"
+type="number"
+min="50"
+max="50000"
+placeholder="Enter amount">
+
+</div>
+
+
+<div class="field">
+
+<label>UPI ID</label>
+
+<div style="display:flex;gap:8px">
+
+<input
+id="upiId"
+value="raogautam1211@oksbi"
+readonly>
+
+<button
+class="btn"
+type="button"
+onclick="copyUpi()"
+style="white-space:nowrap">
+Copy
+</button>
+
+</div>
+
+</div>
+
+
+<div class="actions" style="margin-top:15px">
+
+<button
+class="btn"
+type="button"
+onclick="payViaUpi()">
+Pay via UPI →
+</button>
+
+</div>
+
+
+<div
+id="copyMsg"
+style="color:var(--g);font-size:11px;margin-top:10px">
+</div>
+
+
+<div
+id="qrBox"
+style="display:none;margin-top:18px;padding:16px;background:#fff;border-radius:14px;text-align:center">
+
+<div id="upiQr"></div>
+
+<div style="color:#111;font-size:12px;font-weight:700;margin-top:10px">
+Scan this QR with your UPI phone
+</div>
+
+<div
+id="qrAmount"
+style="color:#333;font-size:11px;margin-top:4px">
+</div>
+
+</div>
+
+
+<p
+style="color:var(--muted);font-size:11px;line-height:1.6;margin-top:16px">
+
+Minimum ₹50 • Maximum ₹50,000
+<br>
+
+After payment, submit your transaction/UTR to support for manual balance verification.
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<div class="label">
+Current Balance
+</div>
+
+<div class="balance">
+₹1,250
+</div>
+
+<div class="mini">
+<span>Payment</span>
+<b style="color:var(--g)">UPI</b>
+</div>
+
+<div class="mini">
+<span>Minimum</span>
+<b>₹50</b>
+</div>
+
+<div class="mini">
+<span>Maximum</span>
+<b>₹50,000</b>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section id="support" class="section">
+
+<div class="top">
+
+<div>
+<h1>Support</h1>
+<p>Need help? Create a support ticket.</p>
+</div>
+
+</div>
+
+
+<div
+class="form"
+style="max-width:800px">
+
+<div class="field">
+
+<label>SUBJECT</label>
+
+<input placeholder="What do you need help with?">
+
+</div>
+
+
+<div class="field">
+
+<label>MESSAGE</label>
+
+<input
+style="height:120px"
+placeholder="Describe your issue...">
+
+</div>
+
+
+<button class="btn">
+Create Ticket
+</button>
+
+</div>
+
+</section>
+
 
 </main>
 
@@ -455,440 +994,117 @@
 
 <script>
 
-/* PAGE NAVIGATION */
+const links=document.querySelectorAll('[data-page]');
+const sections=document.querySelectorAll('.section');
 
-function showPage(pageId,button){
+links.forEach(x=>x.addEventListener('click',e=>{
 
-  document
-    .querySelectorAll('.page')
-    .forEach(function(page){
+e.preventDefault();
 
-      page.classList.remove('active');
+let p=x.dataset.page;
 
-    });
+if(!p)return;
 
+sections.forEach(s=>
+s.classList.toggle('active',s.id===p)
+);
 
-  document
-    .getElementById(pageId)
-    .classList.add('active');
+document.querySelectorAll('.nav a').forEach(a=>
+a.classList.toggle('active',a.dataset.page===p)
+);
 
+window.scrollTo({
+top:0,
+behavior:'smooth'
+});
 
-  document
-    .querySelectorAll('.nav button')
-    .forEach(function(btn){
+}));
 
-      btn.classList.remove('active');
-
-    });
-
-
-  button.classList.add('active');
-
-
-  var titles = {
-
-    dashboard:'Dashboard',
-    order:'New Order',
-    services:'Services',
-    orders:'Orders',
-    funds:'Add Funds',
-    support:'Support'
-
-  };
-
-
-  document
-    .getElementById('pageTitle')
-    .textContent =
-    titles[pageId];
-
-}
-
-
-/* COPY UPI */
 
 function copyUpi(){
 
-  var upi =
-    'raogautam1211@oksbi';
+const id=document.getElementById('upiId').value;
 
+navigator.clipboard.writeText(id).then(()=>{
 
-  if(navigator.clipboard){
+document.getElementById('copyMsg').textContent='UPI ID copied ✓';
 
-    navigator.clipboard
-      .writeText(upi)
-      .then(function(){
+setTimeout(()=>
+document.getElementById('copyMsg').textContent='',
+1800);
 
-        document
-          .getElementById('copyMsg')
-          .textContent =
-          'UPI ID copied!';
+}).catch(()=>{
 
-      });
+document.getElementById('upiId').select();
 
-  }else{
+document.execCommand('copy');
 
-    var temp =
-      document.createElement('textarea');
+document.getElementById('copyMsg').textContent='UPI ID copied ✓';
 
-    temp.value = upi;
-
-    document.body.appendChild(temp);
-
-    temp.select();
-
-    document.execCommand('copy');
-
-    document.body.removeChild(temp);
-
-    document
-      .getElementById('copyMsg')
-      .textContent =
-      'UPI ID copied!';
-
-  }
+});
 
 }
 
-
-/* PAY VIA UPI + QR */
 
 function payViaUpi(){
 
-  var amount =
-    Number(
-      document
-        .getElementById('amount')
-        .value
-    );
+const amount=document.getElementById('upiAmount').value;
 
+if(!amount || Number(amount)<50 || Number(amount)>50000){
 
-  if(!amount || amount < 50){
+document.getElementById('copyMsg').textContent=
+'Please enter an amount between ₹50 and ₹50,000.';
 
-    alert(
-      'Minimum amount ₹50 hai.'
-    );
-
-    return;
-
-  }
-
-
-  if(amount > 50000){
-
-    alert(
-      'Maximum amount ₹50,000 hai.'
-    );
-
-    return;
-
-  }
-
-
-  var upiId =
-    'raogautam1211@oksbi';
-
-
-  var url =
-    'upi://pay?pa=' +
-    encodeURIComponent(upiId) +
-
-    '&pn=' +
-    encodeURIComponent('Qraxsmm') +
-
-    '&am=' +
-    amount.toFixed(2) +
-
-    '&cu=INR' +
-
-    '&tn=' +
-    encodeURIComponent('Qraxsmm Add Funds');
-
-
-  /* SHOW QR */
-
-  document
-    .getElementById('qrBox')
-    .style.display =
-    'block';
-
-
-  document
-    .getElementById('qrAmount')
-    .textContent =
-    'Amount: ₹' +
-    amount.toFixed(2);
-
-
-  document
-    .getElementById('upiQr')
-    .innerHTML =
-    '';
-
-
-  /* GENERATE QR */
-
-  if(window.QRCode){
-
-    new QRCode(
-
-      document.getElementById('upiQr'),
-
-      {
-        text:url,
-        width:210,
-        height:210
-      }
-
-    );
-
-  }
-
-
-  document
-    .getElementById('copyMsg')
-    .textContent =
-    'QR code generated. Scan it from your UPI phone.';
-
-
-  /* TRY UPI APP */
-
-  try{
-
-    window.location.href =
-      url;
-
-  }catch(e){}
+return;
 
 }
 
+const upi='raogautam1211@oksbi';
 
-/* UTR SUBMIT */
-
-function submitUTR(){
-
-  var utr =
-    document
-      .getElementById('utr')
-      .value
-      .trim();
-
-
-  var msg =
-    document
-      .getElementById('utrMsg');
+const url=
+'upi://pay?pa='+
+encodeURIComponent(upi)+
+'&pn='+
+encodeURIComponent('Qraxsmm')+
+'&am='+
+encodeURIComponent(Number(amount).toFixed(2))+
+'&cu=INR';
 
 
-  if(!utr){
+document.getElementById('qrBox').style.display='block';
 
-    msg.style.color =
-      '#ff5555';
+document.getElementById('qrAmount').textContent=
+'Amount: ₹'+Number(amount).toFixed(2);
 
-    msg.textContent =
-      'Please enter your UTR / Transaction ID.';
-
-    return;
-
-  }
+document.getElementById('upiQr').innerHTML='';
 
 
-  if(utr.length < 6){
+if(window.QRCode){
 
-    msg.style.color =
-      '#ff5555';
-
-    msg.textContent =
-      'Please enter a valid UTR / Transaction ID.';
-
-    return;
-
-  }
-
-
-  localStorage.setItem(
-    'qraxsmm_utr',
-    utr
-  );
-
-
-  msg.style.color =
-    '#00ff88';
-
-  msg.textContent =
-    'UTR submitted successfully. Verification pending.';
+new QRCode(
+document.getElementById('upiQr'),
+{
+text:url,
+width:210,
+height:210
+}
+);
 
 }
 
+document.getElementById('copyMsg').textContent=
+'QR code generated. Scan it from your UPI phone.';
 
-/* NEW ORDER */
-
-function placeOrder(){
-
-  var service =
-    document
-      .getElementById('orderService')
-      .value;
-
-  var link =
-    document
-      .getElementById('orderLink')
-      .value
-      .trim();
-
-  var quantity =
-    document
-      .getElementById('orderQuantity')
-      .value;
-
-
-  var msg =
-    document
-      .getElementById('orderMsg');
-
-
-  if(!link || !quantity){
-
-    msg.style.color =
-      '#ff5555';
-
-    msg.textContent =
-      'Please enter link and quantity.';
-
-    return;
-
-  }
-
-
-  var orders =
-    JSON.parse(
-      localStorage.getItem(
-        'qraxsmm_orders'
-      ) || '[]'
-    );
-
-
-  orders.push({
-
-    id:Date.now(),
-
-    service:service,
-
-    link:link,
-
-    quantity:quantity,
-
-    status:'Pending'
-
-  });
-
-
-  localStorage.setItem(
-    'qraxsmm_orders',
-    JSON.stringify(orders)
-  );
-
-
-  msg.style.color =
-    '#00ff88';
-
-  msg.textContent =
-    'Order saved successfully.';
-
-
-  document
-    .getElementById('orderLink')
-    .value = '';
-
-
-  document
-    .getElementById('orderQuantity')
-    .value = '';
-
-
-  loadOrders();
+try{
+window.location.href=url;
+}catch(e){}
 
 }
-
-
-/* LOAD ORDERS */
-
-function loadOrders(){
-
-  var orders =
-    JSON.parse(
-      localStorage.getItem(
-        'qraxsmm_orders'
-      ) || '[]'
-    );
-
-
-  var box =
-    document.getElementById(
-      'ordersList'
-    );
-
-
-  if(!orders.length){
-
-    box.innerHTML =
-      '<div style="color:#777;">No orders yet.</div>';
-
-    return;
-
-  }
-
-
-  box.innerHTML = '';
-
-
-  orders.forEach(function(order){
-
-    var div =
-      document.createElement('div');
-
-    div.className =
-      'order';
-
-
-    div.innerHTML =
-
-      '<div>' +
-
-      '<strong>' +
-      order.service +
-      '</strong>' +
-
-      '<div style="color:#777;font-size:12px;margin-top:5px;">' +
-
-      'Quantity: ' +
-      order.quantity +
-
-      '</div>' +
-
-      '</div>' +
-
-      '<div class="status">' +
-      order.status +
-      '</div>';
-
-
-    box.appendChild(div);
-
-  });
-
-}
-
-
-loadOrders();
 
 </script>
 
 
-<!-- QR CODE LIBRARY -->
-
-<script
-src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 </body>
-      </html>
+  </html>
