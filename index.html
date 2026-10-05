@@ -114,7 +114,7 @@ th{color:var(--muted)}
 <input placeholder="Enter profile/post link">
 <div class="row">
 <div><label>QUANTITY</label><input placeholder="1000"></div>
-<div><label>PRICE</label><input value="₹19.00" readonly></div>
+<div><label>PRICE</label><input value="₹25.00" readonly></div>
 </div>
 <button class="btn">Place Order</button>
 </div>
@@ -137,7 +137,7 @@ th{color:var(--muted)}
 <label>LINK</label><input placeholder="Paste your link">
 <div class="row">
 <div><label>QUANTITY</label><input placeholder="1000"></div>
-<div><label>PRICE</label><input value="₹19.00" readonly></div>
+<div><label>PRICE</label><input value="₹25.00" readonly></div>
 </div>
 <button class="btn">Place Order</button>
 </div>
@@ -147,7 +147,7 @@ th{color:var(--muted)}
 <section id="services" class="page">
 <div class="header"><div><h1>Services</h1><p>Available Qraxsmm services.</p></div></div>
 <div class="serviceGrid">
-<div class="service"><b>Instagram Followers</b><span>Premium followers</span><b>From ₹19 / 1K</b></div>
+<div class="service"><b>Instagram Followers</b><span>Premium followers</span><b>From ₹25 / 1K</b></div>
 <div class="service"><b>Instagram Likes</b><span>Fast likes</span><b>From ₹9 / 1K</b></div>
 <div class="service"><b>Instagram Views</b><span>Video views</span><b>From ₹5 / 1K</b></div>
 <div class="service"><b>YouTube Views</b><span>High retention views</span><b>From ₹29 / 1K</b></div>
@@ -274,6 +274,19 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 const UPI_ID = "raogautam1211@oksbi";
+
+/* Qraxsmm pricing slabs: provider cost -> Qraxsmm selling price */
+const QRAXSMM_PRICING = {
+  1: 25,
+  2: 8,
+  5: 10
+};
+function qraxsmmPrice(providerRatePer1K){
+  const rate=Number(providerRatePer1K);
+  if(Object.prototype.hasOwnProperty.call(QRAXSMM_PRICING, rate)) return QRAXSMM_PRICING[rate];
+  return rate;
+}
+
 
 /* =========================
    PAGE NAVIGATION
@@ -494,4 +507,5 @@ loadPendingCount();
 </script>
 
 </body>
-</html>
+                                                                               </html>
+
