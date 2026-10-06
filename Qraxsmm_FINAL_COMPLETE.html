@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qraxsmm - Premium SMM Panel</title>
+
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f4f8fc;color:#26364a;font-family:Arial,Helvetica,sans-serif}:root{--blue:#1687e8;--line:#e1eaf2;--muted:#7b8da1}
+.app{display:flex;min-height:100vh}.sidebar{width:235px;position:fixed;inset:0 auto 0 0;background:#fff;border-right:1px solid var(--line);padding:22px 14px}.logo{font-size:25px;font-weight:900;padding:5px 12px 28px;color:#203248}.logo span{color:var(--blue)}
+.nav button{width:100%;display:block;text-align:left;border:0;background:transparent;color:#63768b;padding:13px 14px;border-radius:9px;margin:4px 0;cursor:pointer;font-size:14px}.nav button:hover,.nav button.active{background:#eaf5ff;color:var(--blue);font-weight:700}
+.sideBalance{position:absolute;left:14px;right:14px;bottom:18px;background:#f5faff;border:1px solid #dcebf8;border-radius:12px;padding:14px}.sideBalance small{color:var(--muted)}.sideBalance b{display:block;margin:5px 0 12px}.main{margin-left:235px;width:calc(100% - 235px);padding:25px 30px}.page{display:none}.page.active{display:block}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.header h1{margin:0;font-size:25px;color:#25364a}.header p{color:var(--muted);margin:6px 0 0;font-size:13px}.online{border:1px solid #d9e9f7;background:#fff;border-radius:9px;padding:9px 13px;font-size:13px;color:#15945b}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:0 2px 7px rgba(30,60,90,.04)}.card small{color:var(--muted)}.number{font-size:25px;font-weight:800;margin-top:7px}.layout{display:grid;grid-template-columns:1.4fr .6fr;gap:16px;margin-top:16px}.box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:21px;box-shadow:0 2px 7px rgba(30,60,90,.035)}.title{font-size:17px;font-weight:800;margin-bottom:15px}
+label{display:block;color:#718398;font-size:11px;margin:12px 0 7px;font-weight:700}input,select,textarea{width:100%;background:#fff;color:#26364a;border:1px solid #dbe5ee;border-radius:7px;padding:11px;outline:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{background:var(--blue);color:#fff;border:0;border-radius:7px;padding:11px 17px;font-weight:700;cursor:pointer;margin-top:12px}.btn.secondary{background:#fff;color:var(--blue);border:1px solid #cfe3f5}.notice{background:#eef7ff;border:1px solid #d7ebfb;color:#55708a;padding:13px;border-radius:8px;font-size:12px;margin:12px 0}
+.serviceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px}.service b{display:block;color:var(--blue);margin-top:11px}.service span{color:#718398;font-size:13px}.upi{border:1px solid #d7e9f8;background:#f7fbff;border-radius:11px;padding:17px;margin-top:14px}.upiId{font-size:17px;color:var(--blue);font-weight:800;word-break:break-all}#qrBox{display:none;background:#fff;border:1px solid #dfe7ee;border-radius:11px;padding:18px;text-align:center;margin-top:16px}.msg{min-height:20px;color:#15945b;font-size:12px;margin-top:8px}.amountBig{font-size:36px;font-weight:900;margin:7px 0 18px}table{width:100%;border-collapse:collapse}th,td{padding:13px;border-bottom:1px solid var(--line);text-align:left;font-size:12px}th{color:var(--muted)}.status{color:#e69a00}
+@media(max-width:800px){.sidebar{width:70px;padding:20px 8px}.logo{font-size:0;text-align:center}.logo:after{content:"Q";font-size:28px;color:var(--blue);font-weight:900}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:18px}.sideBalance{display:none}.main{margin-left:70px;width:calc(100% - 70px);padding:18px 12px}.grid{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}.serviceGrid{grid-template-columns:1fr 1fr}.online{display:none}}@media(max-width:500px){.grid,.serviceGrid,.row{grid-template-columns:1fr}.main{padding:15px 9px}}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<aside class="sidebar">
+<div class="logo">Qrax<span>smm</span></div>
+
+<div class="nav">
+<button class="active" onclick="showPage('dashboard',this)">🏠 Dashboard</button>
+<button onclick="showPage('order',this)">🛒 New Order</button>
+<button onclick="showPage('services',this)">📦 Services</button>
+<button onclick="showPage('orders',this)">📋 Orders</button>
+<button onclick="showPage('funds',this)">💳 Add Funds</button>
+<button onclick="showPage('support',this)">💬 Support</button>
+</div>
+
+<div class="sideBalance">
+<small>Wallet Balance</small>
+<b id="sideBalance">₹0.00</b>
+<button class="btn" style="width:100%" onclick="showPage('funds')">Add Funds</button>
+</div>
+</aside>
+
+<main class="main">
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page active">
+<div class="header">
+<div><h1>Welcome to Qraxsmm 👋</h1><p>Premium Social Media Marketing Panel</p></div>
+<div class="online">🟢 Online</div>
+</div>
+
+<div class="grid">
+<div class="card"><small>Wallet Balance</small><div class="number" id="dashBalance">₹0.00</div></div>
+<div class="card"><small>Total Orders</small><div class="number">0</div></div>
+<div class="card"><small>Completed</small><div class="number">0</div></div>
+<div class="card"><small>Pending Payments</small><div class="number" id="pendingCount">0</div></div>
+</div>
+
+<div class="layout">
+<div class="box">
+<div class="title">Quick Order</div>
+<label>SERVICE</label>
+<select>
+<option>Instagram Followers • ₹25 / 1K</option>
+<option>Instagram Likes • ₹9 / 1K</option>
+<option>Instagram Views • ₹5 / 1K</option>
+<option>YouTube Views • ₹29 / 1K</option>
+<option>YouTube Subscribers • ₹99 / 1K</option>
+</select>
+<label>LINK</label>
+<input placeholder="Enter profile/post link">
+<div class="row">
+<div><label>QUANTITY</label><input placeholder="1000"></div>
+<div><label>PRICE</label><input value="₹25.00" readonly></div>
+</div>
+<button class="btn" onclick="showPage('order')">Place Order →</button>
+</div>
+
+<div class="box">
+<div class="title">Account</div>
+<div class="amountBig">₹0.00</div>
+<p style="color:#91a69a;font-size:13px">Your wallet balance will appear here after verified payment.</p>
+<button class="btn" onclick="showPage('funds')">Add Funds →</button>
+</div>
+</div>
+</section>
+
+<!-- NEW ORDER -->
+<section id="order" class="page">
+<div class="header"><div><h1>New Order</h1><p>Choose a service, enter your link and quantity, then place your order.</p></div></div>
+<div class="box" style="max-width:900px">
+<div class="title">🛒 New Order</div>
+
+<label>SEARCH SERVICES</label>
+<input id="serviceSearch" placeholder="Search Instagram, YouTube, Followers..." oninput="filterServices()">
+
+<label>CATEGORY</label>
+<select id="categorySelect" onchange="filterServices()">
+<option value="all">All Services</option>
+<option value="instagram">Instagram</option>
+<option value="youtube">YouTube</option>
+<option value="tiktok">TikTok</option>
+</select>
+
+<label>SERVICE</label>
+<select id="serviceSelect" onchange="updateServiceInfo()">
+<option value="397" data-category="instagram" data-price="25" data-min="100" data-max="50000" data-time="5-30 minutes">Instagram Followers • ₹25 / 1K</option>
+<option value="iglikes" data-category="instagram" data-price="9" data-min="100" data-max="50000" data-time="5-30 minutes">Instagram Likes • ₹9 / 1K</option>
+<option value="igviews" data-category="instagram" data-price="5" data-min="100" data-max="100000" data-time="5-20 minutes">Instagram Views • ₹5 / 1K</option>
+<option value="ytviews" data-category="youtube" data-price="29" data-min="100" data-max="100000" data-time="10-60 minutes">YouTube Views • ₹29 / 1K</option>
+<option value="ytsubs" data-category="youtube" data-price="99" data-min="100" data-max="50000" data-time="30-120 minutes">YouTube Subscribers • ₹99 / 1K</option>
+<option value="ttfollowers" data-category="tiktok" data-price="25" data-min="100" data-max="50000" data-time="10-60 minutes">TikTok Followers • ₹25 / 1K</option>
+</select>
+
+<div class="notice" id="serviceDescription">Instagram Followers • Premium delivery. Customer price ₹25 / 1K.</div>
+
+<label>LINK</label>
+<input id="orderLink" type="url" placeholder="https://instagram.com/username">
+
+<div class="row">
+<div><label>QUANTITY</label><input id="orderQuantity" type="number" min="100" max="50000" placeholder="1000" oninput="calculateOrder()"><div id="quantityHelp" style="font-size:12px;color:#718398;margin-top:6px">Min: 100 — Max: 50,000</div></div>
+<div><label>CHARGE</label><input id="orderCharge" value="₹0.00" readonly></div>
+</div>
+
+<label>AVERAGE TIME</label>
+<input id="averageTime" value="5-30 minutes" readonly>
+
+<button class="btn" id="placeOrderBtn" onclick="placeQraxsmmOrder()">Place Order →</button>
+<div id="orderMsg" class="msg"></div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="page">
+<div class="header"><div><h1>Services</h1><p>Customer selling prices only.</p></div></div>
+<div class="serviceGrid">
+<div class="service"><b>Instagram Followers</b><span>Premium delivery</span><b>₹25 / 1K</b></div>
+<div class="service"><b>Instagram Likes</b><span>Fast delivery</span><b>₹9 / 1K</b></div>
+<div class="service"><b>Instagram Views</b><span>Video views</span><b>₹5 / 1K</b></div>
+<div class="service"><b>YouTube Views</b><span>High retention options</span><b>₹29 / 1K</b></div>
+<div class="service"><b>YouTube Subscribers</b><span>Premium delivery</span><b>₹99 / 1K</b></div>
+<div class="service"><b>TikTok Followers</b><span>Premium delivery</span><b>₹25 / 1K</b></div>
+</div>
+</section>
+
+<!-- ORDERS -->
+<section id="orders" class="page">
+<div class="header"><div><h1>Orders</h1><p>Your recent orders.</p></div></div>
+<div class="box">
+<table>
+<tr><th>Order ID</th><th>Service</th><th>Amount</th><th>Status</th></tr>
+<tr><td>-</td><td>No orders</td><td>-</td><td class="status">Waiting</td></tr>
+</table>
+</div>
+</section>
+
+<!-- ADD FUNDS -->
+<section id="funds" class="page">
+<div class="header">
+<div><h1>Add Funds</h1><p>Pay using UPI and submit your UTR for verification.</p></div>
+</div>
+
+<div class="layout">
+
+<div class="box">
+<div class="title">💳 UPI Payment</div>
+
+<div class="notice">
+Enter amount → Generate QR → Pay from your UPI phone → Enter UTR → Submit Payment.
+</div>
+
+<label>AMOUNT (₹50 - ₹50,000)</label>
+<input id="amount" type="number" min="50" max="50000" placeholder="Enter amount">
+
+<div class="upi">
+<div style="font-size:11px;color:#91a69a">UPI ID</div>
+<div class="upiId">raogautam1211@oksbi</div>
+<button class="btn secondary" onclick="copyUPI()">Copy UPI ID</button>
+<div id="copyMsg" class="msg"></div>
+</div>
+
+<button class="btn" onclick="generateQR()">Generate QR & Pay</button>
+
+<div id="qrBox">
+<div id="upiQr"></div>
+<div class="qrDark">Scan this QR with your UPI phone</div>
+<div id="qrAmount" class="qrDark" style="font-size:12px;font-weight:normal"></div>
+</div>
+
+<hr style="border:0;border-top:1px solid #1b3826;margin:22px 0">
+
+<div class="title">✅ Payment Verification</div>
+<div class="notice">
+Payment karne ke baad UPI app ka <b>UTR / Transaction ID</b> yahan enter karo. Payment pehle <b>Pending</b> rahega.
+</div>
+
+<label>UTR / TRANSACTION ID</label>
+<input id="utr" placeholder="Example: 123456789012">
+
+<button class="btn" onclick="submitPayment()">Submit Payment</button>
+<div id="paymentMsg" class="msg"></div>
+
+</div>
+
+<div class="box">
+<div style="color:#91a69a;font-size:12px">Current Wallet Balance</div>
+<div class="amountBig" id="walletBalance">₹0.00</div>
+
+<div class="notice">
+<b>Minimum:</b> ₹50<br>
+<b>Maximum:</b> ₹50,000<br>
+<b>UPI:</b> raogautam1211@oksbi
+</div>
+
+<p style="font-size:12px;color:#91a69a">
+Payment verify hone ke baad wallet balance update kiya jayega.
+</p>
+</div>
+
+</div>
+</section>
+
+<!-- SUPPORT -->
+<section id="support" class="page">
+<div class="header"><div><h1>Support</h1><p>Need help with your payment or order?</p></div></div>
+<div class="box">
+<label>SUBJECT</label>
+<input placeholder="Payment / Order issue">
+<label>MESSAGE</label>
+<textarea rows="7" placeholder="Write your message"></textarea>
+<button class="btn">Send Support Request</button>
+</div>
+</section>
+
+</main>
+</div>
+
+<!-- QR LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<!-- FIREBASE -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+<script>
+/* =========================
+   FIREBASE CONFIG
+========================= */
+
+const firebaseConfig = {
+ apiKey: "AIzaSyANFGOpmvkVad-zvADk3cJo-s2KNUsTC6Y",
+ authDomain: "qraxsmm.firebaseapp.com",
+ projectId: "qraxsmm",
+ storageBucket: "qraxsmm.firebasestorage.app",
+ messagingSenderId: "310131376142",
+ appId: "1:310131376142:web:7f801a74d3d93eafc23c5f",
+ measurementId: "G-QZF28DJNZ2"
+};
+
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+
+const UPI_ID = "raogautam1211@oksbi";
+
+/* =========================
+   PAGE NAVIGATION
+========================= */
+
+function showPage(page,btn){
+
+document.querySelectorAll(".page").forEach(function(x){
+x.classList.remove("active");
+});
+
+const target=document.getElementById(page);
+
+if(target){
+target.classList.add("active");
+}
+
+document.querySelectorAll(".nav button").forEach(function(x){
+x.classList.remove("active");
+});
+
+if(btn){
+btn.classList.add("active");
+}
+
+window.scrollTo(0,0);
+}
+
+/* =========================
+   COPY UPI
+========================= */
+
+function copyUPI(){
+
+navigator.clipboard.writeText(UPI_ID).then(function(){
+
+document.getElementById("copyMsg").innerText="UPI ID copied ✓";
+
+}).catch(function(){
+
+document.getElementById("copyMsg").innerText=UPI_ID;
+
+});
+
+}
+
+/* =========================
+   AMOUNT
+========================= */
+
+function getAmount(){
+
+const value=document.getElementById("amount").value;
+
+if(!value){
+alert("Pehle amount enter karo.");
+return null;
+}
+
+const amount=Number(value);
+
+if(amount<50 || amount>50000){
+alert("Amount ₹50 se ₹50,000 ke beech hona chahiye.");
+return null;
+}
+
+return amount.toFixed(2);
+}
+
+/* =========================
+   UPI QR
+========================= */
+
+function generateQR(){
+
+const amount=getAmount();
+
+if(!amount) return;
+
+const upiURL=
+"upi://pay?pa="+encodeURIComponent(UPI_ID)+
+"&pn="+encodeURIComponent("Qraxsmm")+
+"&am="+encodeURIComponent(amount)+
+"&cu=INR"+
+"&tn="+encodeURIComponent("Qraxsmm Wallet Add Funds");
+
+document.getElementById("upiQr").innerHTML="";
+
+document.getElementById("qrBox").style.display="block";
+
+document.getElementById("qrAmount").innerText="Amount: ₹"+amount;
+
+if(typeof QRCode !== "undefined"){
+
+new QRCode(document.getElementById("upiQr"),{
+text:upiURL,
+width:220,
+height:220
+});
+
+}else{
+
+document.getElementById("upiQr").innerHTML=
+'<p style="color:#111">QR load nahi hua. Internet check karke refresh karo.</p>';
+
+}
+
+document.getElementById("paymentMsg").innerText=
+"QR ready hai. Payment karne ke baad UTR neeche submit karo.";
+
+}
+
+/* =========================
+   SUBMIT PAYMENT TO FIRESTORE
+========================= */
+
+async function submitPayment(){
+
+const amount=getAmount();
+
+if(!amount) return;
+
+const utr=document.getElementById("utr").value.trim();
+
+if(!utr){
+
+alert("Payment ka UTR / Transaction ID enter karo.");
+
+return;
+
+}
+
+if(utr.length<6){
+
+alert("UTR / Transaction ID sahi enter karo.");
+
+return;
+
+}
+
+const msg=document.getElementById("paymentMsg");
+
+msg.style.color="#20ed75";
+msg.innerText="Payment submit ho raha hai...";
+
+try{
+
+await db.collection("payments").add({
+
+amount:Number(amount),
+
+utr:utr,
+
+upiId:UPI_ID,
+
+status:"pending",
+
+createdAt:firebase.firestore.FieldValue.serverTimestamp()
+
+});
+
+msg.innerText=
+"Payment request submit ho gayi ✓ UTR: "+utr+
+" | Status: Pending";
+
+document.getElementById("utr").value="";
+
+loadPendingCount();
+
+}catch(error){
+
+console.error(error);
+
+msg.style.color="#ff7777";
+
+msg.innerText=
+"Payment save nahi hua. Firebase Firestore Rules check karo.";
+
+alert(
+"Firebase error: "+error.message+
+"\n\nFirestore Rules me payment create permission check karo."
+);
+
+}
+
+}
+
+
+/* =========================
+   QRAXSMM ORDER SYSTEM
+   Provider API key stays on Cloudflare Worker.
+========================= */
+
+const WORKER_URL = "https://qraxsmm.raogautam1211.workers.dev";
+const QRAXSMM_SERVICE_ID = "397";
+
+function selectedService(){
+  const s = document.getElementById("serviceSelect");
+  return s ? s.options[s.selectedIndex] : null;
+}
+
+function updateServiceInfo(){
+  const s = selectedService();
+  if(!s) return;
+  const price = Number(s.dataset.price || 0);
+  const min = Number(s.dataset.min || 100);
+  const max = Number(s.dataset.max || 50000);
+  document.getElementById("quantityHelp").innerText =
+    "Min: " + min.toLocaleString("en-IN") + " — Max: " + max.toLocaleString("en-IN");
+  document.getElementById("averageTime").value = s.dataset.time || "—";
+  document.getElementById("serviceDescription").innerText =
+    s.textContent.trim() + ". Customer price ₹" + price + " / 1K.";
+  calculateOrder();
+}
+
+function calculateOrder(){
+  const s = selectedService();
+  const q = Number(document.getElementById("orderQuantity").value || 0);
+  const price = Number(s?.dataset.price || 0);
+  document.getElementById("orderCharge").value =
+    "₹" + (q > 0 ? (q / 1000) * price : 0).toFixed(2);
+}
+
+function filterServices(){
+  const search = (document.getElementById("serviceSearch").value || "").toLowerCase().trim();
+  const cat = document.getElementById("categorySelect").value;
+  const select = document.getElementById("serviceSelect");
+
+  [...select.options].forEach(option => {
+    const visible =
+      (!search || option.textContent.toLowerCase().includes(search)) &&
+      (cat === "all" || option.dataset.category === cat);
+    option.hidden = !visible;
+  });
+
+  if(select.options[select.selectedIndex]?.hidden){
+    const first = [...select.options].find(o => !o.hidden);
+    if(first) select.value = first.value;
+  }
+  updateServiceInfo();
+}
+
+async function placeQraxsmmOrder(){
+  const btn = document.getElementById("placeOrderBtn");
+  const msg = document.getElementById("orderMsg");
+  const s = selectedService();
+  const link = document.getElementById("orderLink").value.trim();
+  const qty = Number(document.getElementById("orderQuantity").value || 0);
+
+  if(!s){ msg.innerText = "Service select karo."; return; }
+  if(!link){ msg.innerText = "Profile/post link enter karo."; return; }
+
+  const min = Number(s.dataset.min);
+  const max = Number(s.dataset.max);
+  if(!qty || qty < min || qty > max){
+    msg.innerText = "Quantity " + min.toLocaleString("en-IN") + " se " + max.toLocaleString("en-IN") + " ke beech honi chahiye.";
+    return;
+  }
+
+  const charge = (qty / 1000) * Number(s.dataset.price);
+  btn.disabled = true;
+  btn.innerText = "Placing Order...";
+  msg.innerText = "Order submit ho raha hai...";
+
+  try{
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({
+        action: "add",
+        service: QRAXSMM_SERVICE_ID,
+        link: link,
+        quantity: qty
+      })
+    });
+
+    const data = await response.json().catch(() => ({}));
+    if(!response.ok || data.error){
+      throw new Error(data.error || data.message || "Worker order request failed");
+    }
+
+    const providerOrderId = data.order || data.order_id || data.id || "submitted";
+    msg.innerText = "Order placed ✓ Order ID: " + providerOrderId + " | Charge: ₹" + charge.toFixed(2);
+    document.getElementById("orderLink").value = "";
+    document.getElementById("orderQuantity").value = "";
+    document.getElementById("orderCharge").value = "₹0.00";
+  }catch(error){
+    console.error(error);
+    msg.innerText = "Order place nahi hua. Cloudflare Worker/API connection check karo.";
+  }finally{
+    btn.disabled = false;
+    btn.innerText = "Place Order →";
+  }
+}
+
+updateServiceInfo();
+
+/* =========================
+   PENDING COUNT
+========================= */
+
+function loadPendingCount(){
+
+db.collection("payments")
+.where("status","==","pending")
+.get()
+.then(function(snapshot){
+
+document.getElementById("pendingCount").innerText=snapshot.size;
+
+})
+.catch(function(error){
+
+console.log(error);
+
+});
+
+}
+
+loadPendingCount();
+
+/* =========================
+   NOTE:
+   Wallet balance is NOT automatically
+   credited from browser.
+   Admin verification is required.
+========================= */
+</script>
+
+</body>
+</html>
