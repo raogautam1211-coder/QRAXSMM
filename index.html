@@ -2,453 +2,1008 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qraxsmm - Premium SMM Panel</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<title>Qraxsmm - New Order</title>
 
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f4f8fc;color:#26364a;font-family:Arial,Helvetica,sans-serif}:root{--blue:#1687e8;--line:#e1eaf2;--muted:#7b8da1}
-.app{display:flex;min-height:100vh}.sidebar{width:235px;position:fixed;inset:0 auto 0 0;background:#fff;border-right:1px solid var(--line);padding:22px 14px}.logo{font-size:25px;font-weight:900;padding:5px 12px 28px;color:#203248}.logo span{color:var(--blue)}
-.nav button{width:100%;display:block;text-align:left;border:0;background:transparent;color:#63768b;padding:13px 14px;border-radius:9px;margin:4px 0;cursor:pointer;font-size:14px}.nav button:hover,.nav button.active{background:#eaf5ff;color:var(--blue);font-weight:700}
-.sideBalance{position:absolute;left:14px;right:14px;bottom:18px;background:#f5faff;border:1px solid #dcebf8;border-radius:12px;padding:14px}.sideBalance small{color:var(--muted)}.sideBalance b{display:block;margin:5px 0 12px}.main{margin-left:235px;width:calc(100% - 235px);padding:25px 30px}.page{display:none}.page.active{display:block}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.header h1{margin:0;font-size:25px;color:#25364a}.header p{color:var(--muted);margin:6px 0 0;font-size:13px}.online{border:1px solid #d9e9f7;background:#fff;border-radius:9px;padding:9px 13px;font-size:13px;color:#15945b}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:0 2px 7px rgba(30,60,90,.04)}.card small{color:var(--muted)}.number{font-size:25px;font-weight:800;margin-top:7px}.layout{display:grid;grid-template-columns:1.4fr .6fr;gap:16px;margin-top:16px}.box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:21px;box-shadow:0 2px 7px rgba(30,60,90,.035)}.title{font-size:17px;font-weight:800;margin-bottom:15px}
-label{display:block;color:#718398;font-size:11px;margin:12px 0 7px;font-weight:700}input,select,textarea{width:100%;background:#fff;color:#26364a;border:1px solid #dbe5ee;border-radius:7px;padding:11px;outline:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{background:var(--blue);color:#fff;border:0;border-radius:7px;padding:11px 17px;font-weight:700;cursor:pointer;margin-top:12px}.btn.secondary{background:#fff;color:var(--blue);border:1px solid #cfe3f5}.notice{background:#eef7ff;border:1px solid #d7ebfb;color:#55708a;padding:13px;border-radius:8px;font-size:12px;margin:12px 0}
-.serviceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px}.service b{display:block;color:var(--blue);margin-top:11px}.service span{color:#718398;font-size:13px}.upi{border:1px solid #d7e9f8;background:#f7fbff;border-radius:11px;padding:17px;margin-top:14px}.upiId{font-size:17px;color:var(--blue);font-weight:800;word-break:break-all}#qrBox{display:none;background:#fff;border:1px solid #dfe7ee;border-radius:11px;padding:18px;text-align:center;margin-top:16px}.msg{min-height:20px;color:#15945b;font-size:12px;margin-top:8px}.amountBig{font-size:36px;font-weight:900;margin:7px 0 18px}table{width:100%;border-collapse:collapse}th,td{padding:13px;border-bottom:1px solid var(--line);text-align:left;font-size:12px}th{color:var(--muted)}.status{color:#e69a00}
-@media(max-width:800px){.sidebar{width:70px;padding:20px 8px}.logo{font-size:0;text-align:center}.logo:after{content:"Q";font-size:28px;color:var(--blue);font-weight:900}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:18px}.sideBalance{display:none}.main{margin-left:70px;width:calc(100% - 70px);padding:18px 12px}.grid{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}.serviceGrid{grid-template-columns:1fr 1fr}.online{display:none}}@media(max-width:500px){.grid,.serviceGrid,.row{grid-template-columns:1fr}.main{padding:15px 9px}}
+:root{
+  --blue:#0788e8;
+  --blue2:#0b78d0;
+  --navy:#073b68;
+  --bg:#eaf4ff;
+  --field:#eef7ff;
+  --white:#fff;
+  --black:#050505;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  margin:0;
+  padding:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--black);
+}
+
+body{
+  min-height:100vh;
+}
+
+/* TOP BAR */
+.top{
+  height:74px;
+  background:#2f3035;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  padding:0 24px;
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.top .close{
+  font-size:42px;
+  font-weight:200;
+  margin-right:28px;
+  line-height:1;
+}
+
+.top .down{
+  font-size:43px;
+  margin-right:28px;
+  line-height:1;
+  transform:translateY(-5px);
+}
+
+.top .page{
+  font-size:30px;
+  line-height:1.02;
+  flex:1;
+}
+
+.top .page small{
+  display:block;
+  font-size:18px;
+  margin-top:3px;
+}
+
+.top .share,
+.top .bookmark,
+.top .more{
+  font-size:34px;
+  margin-left:27px;
+}
+
+/* HEADER */
+.header{
+  height:126px;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 48px;
+  border-bottom:1px solid #dce7f0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:#063b68;
+  font-weight:800;
+  font-size:39px;
+  letter-spacing:-1.5px;
+}
+
+.logo{
+  width:66px;
+  height:66px;
+  border-radius:13px;
+  background:#0788e8;
+  display:grid;
+  place-items:center;
+  color:white;
+  font-size:46px;
+  font-weight:900;
+}
+
+.hamb{
+  font-size:54px;
+  color:#073b68;
+  line-height:.8;
+}
+
+/* MAIN */
+main{
+  max-width:920px;
+  margin:0 auto;
+  padding:25px 30px 80px;
+}
+
+/* STAT CARDS */
+.stat{
+  background:#fff;
+  border:6px solid var(--blue);
+  border-radius:29px;
+  min-height:255px;
+  margin:0 0 56px;
+  display:flex;
+  align-items:center;
+  padding:30px 95px;
+  gap:72px;
+}
+
+.stat .ico{
+  width:105px;
+  min-width:105px;
+  color:#073b68;
+  text-align:center;
+  font-size:76px;
+  font-weight:700;
+}
+
+.stat .num{
+  font-size:62px;
+  font-weight:800;
+  line-height:1.1;
+}
+
+.stat .label{
+  font-size:28px;
+  font-weight:800;
+  margin-top:25px;
+}
+
+/* ORDER PANEL */
+.panel{
+  background:#fff;
+  border-radius:28px;
+  padding:48px 48px 55px;
+  margin-top:10px;
+}
+
+/* SOCIAL BUTTONS */
+.socials{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:17px;
+  margin-bottom:52px;
+}
+
+.social{
+  height:90px;
+  border:0;
+  border-radius:19px;
+  background:#e9f4ff;
+  box-shadow:0 4px 0 #b9dbf2;
+  display:grid;
+  place-items:center;
+  font-size:43px;
+  color:#0788e8;
+}
+
+.social.active{
+  background:#0788e8;
+  color:#fff;
+  box-shadow:0 4px 0 #0874c5;
+}
+
+/* SEARCH */
+.search{
+  height:94px;
+  border-radius:18px;
+  background:var(--field);
+  box-shadow:0 4px 0 #beddec;
+  display:flex;
+  align-items:center;
+  padding:0 27px;
+  font-size:30px;
+  color:#123f66;
+  margin-bottom:28px;
+}
+
+.search .magnify{
+  font-size:43px;
+  margin-right:23px;
+}
+
+/* LABELS */
+.field-label{
+  font-size:29px;
+  font-weight:800;
+  margin:24px 0 14px;
+}
+
+/* INPUTS */
+.select,
+.input,
+.desc{
+  width:100%;
+  min-height:94px;
+  border:0;
+  border-radius:18px;
+  background:var(--field);
+  box-shadow:0 4px 0 #beddec;
+  padding:24px;
+  font-size:29px;
+  color:#0a3559;
+  outline:none;
+}
+
+.select{
+  appearance:auto;
+}
+
+.desc{
+  min-height:105px;
+}
+
+.idbadge{
+  display:inline-block;
+  background:#69b2ed;
+  color:#fff;
+  border-radius:12px;
+  padding:9px 18px;
+  font-weight:800;
+  font-size:24px;
+  margin-right:7px;
+}
+
+.help{
+  font-size:23px;
+  margin:13px 0 30px;
+}
+
+.charge{
+  font-size:32px;
+  font-weight:800;
+  margin-top:26px;
+}
+
+/* BUTTON */
+.place{
+  width:100%;
+  height:92px;
+  border:0;
+  border-radius:17px;
+  background:#0788e8;
+  color:#fff;
+  font-size:30px;
+  font-weight:800;
+  box-shadow:0 4px 0 #076fb9;
+  margin-top:35px;
+}
+
+/* SECTIONS */
+.section{
+  display:none;
+}
+
+.section.active{
+  display:block;
+}
+
+/* MENU */
+.side-menu{
+  position:fixed;
+  right:20px;
+  top:92px;
+  background:#fff;
+  border-radius:18px;
+  box-shadow:0 10px 35px #0002;
+  padding:15px;
+  display:none;
+  z-index:50;
+}
+
+.side-menu button{
+  display:block;
+  border:0;
+  background:#eef7ff;
+  color:#073b68;
+  padding:15px 28px;
+  border-radius:12px;
+  margin:6px;
+  font-size:18px;
+  font-weight:700;
+}
+
+/* NOTICE */
+.notice{
+  background:#fff;
+  border-radius:18px;
+  padding:25px;
+  font-size:19px;
+  line-height:1.5;
+}
+
+/* MOBILE */
+@media(max-width:600px){
+
+  .top{
+    height:75px;
+    padding:0 20px;
+  }
+
+  .top .close{
+    font-size:39px;
+    margin-right:21px;
+  }
+
+  .top .down{
+    font-size:37px;
+    margin-right:20px;
+  }
+
+  .top .page{
+    font-size:25px;
+  }
+
+  .top .page small{
+    font-size:15px;
+  }
+
+  .top .share,
+  .top .bookmark,
+  .top .more{
+    font-size:27px;
+    margin-left:17px;
+  }
+
+  .header{
+    height:125px;
+    padding:0 47px;
+  }
+
+  .brand{
+    font-size:34px;
+  }
+
+  .logo{
+    width:63px;
+    height:63px;
+    font-size:43px;
+  }
+
+  .hamb{
+    font-size:48px;
+  }
+
+  main{
+    padding:24px 30px 65px;
+  }
+
+  .stat{
+    min-height:255px;
+    padding:28px 38px;
+    gap:45px;
+    margin-bottom:56px;
+  }
+
+  .stat .ico{
+    font-size:61px;
+    width:90px;
+    min-width:90px;
+  }
+
+  .stat .num{
+    font-size:49px;
+  }
+
+  .stat .label{
+    font-size:25px;
+    margin-top:22px;
+  }
+
+  .panel{
+    padding:48px 48px 50px;
+    border-radius:27px;
+  }
+
+  .socials{
+    grid-template-columns:repeat(5,1fr);
+    gap:16px;
+  }
+
+  .social{
+    height:85px;
+    font-size:37px;
+  }
+
+  .search,
+  .select,
+  .input,
+  .desc{
+    font-size:25px;
+  }
+
+  .field-label{
+    font-size:27px;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<!-- TOP BAR -->
+<div class="top">
 
-<aside class="sidebar">
-<div class="logo">Qrax<span>smm</span></div>
+  <div class="close">×</div>
 
-<div class="nav">
-<button class="active" onclick="showPage('dashboard',this)">🏠 Dashboard</button>
-<button onclick="showPage('order',this)">🛒 New Order</button>
-<button onclick="showPage('services',this)">📦 Services</button>
-<button onclick="showPage('orders',this)">📋 Orders</button>
-<button onclick="showPage('funds',this)">💳 Add Funds</button>
-<button onclick="showPage('support',this)">💬 Support</button>
+  <div class="down">⌄</div>
+
+  <div class="page">
+    New order
+    <small>qraxsmm.com</small>
+  </div>
+
+  <div class="share">⌯</div>
+
+  <div class="bookmark">♡</div>
+
+  <div class="more">⋮</div>
+
 </div>
 
-<div class="sideBalance">
-<small>Wallet Balance</small>
-<b id="sideBalance">₹0.00</b>
-<button class="btn" style="width:100%" onclick="showPage('funds')">Add Funds</button>
-</div>
-</aside>
 
-<main class="main">
+<!-- HEADER -->
+<header class="header">
 
-<!-- DASHBOARD -->
-<section id="dashboard" class="page active">
-<div class="header">
-<div><h1>Welcome to Qraxsmm 👋</h1><p>Premium Social Media Marketing Panel</p></div>
-<div class="online">🟢 Online</div>
+  <div class="brand">
+
+    <div class="logo">
+      ⚡
+    </div>
+
+    Qraxsmm
+
+  </div>
+
+  <div class="hamb" onclick="toggleMenu()">
+    ☰
+  </div>
+
+</header>
+
+
+<!-- MENU -->
+<div class="side-menu" id="menu">
+
+  <button onclick="show('new')">
+    New order
+  </button>
+
+  <button onclick="show('orders')">
+    Orders
+  </button>
+
+  <button onclick="show('funds')">
+    Add funds
+  </button>
+
+  <button onclick="show('support')">
+    Support
+  </button>
+
 </div>
 
-<div class="grid">
-<div class="card"><small>Wallet Balance</small><div class="number" id="dashBalance">₹0.00</div></div>
-<div class="card"><small>Total Orders</small><div class="number">0</div></div>
-<div class="card"><small>Completed</small><div class="number">0</div></div>
-<div class="card"><small>Pending Payments</small><div class="number" id="pendingCount">0</div></div>
-</div>
 
-<div class="layout">
-<div class="box">
-<div class="title">Quick Order</div>
-<label>SERVICE</label>
-<select>
-<option>Instagram Followers • ₹25 / 1K</option>
-<option>Instagram Likes • ₹9 / 1K</option>
-<option>Instagram Views • ₹5 / 1K</option>
-<option>YouTube Views • ₹29 / 1K</option>
-<option>YouTube Subscribers • ₹99 / 1K</option>
-</select>
-<label>LINK</label>
-<input placeholder="Enter profile/post link">
-<div class="row">
-<div><label>QUANTITY</label><input placeholder="1000"></div>
-<div><label>PRICE</label><input value="₹25.00" readonly></div>
-</div>
-<button class="btn">Place Order</button>
-</div>
-
-<div class="box">
-<div class="title">Account</div>
-<div class="amountBig">₹0.00</div>
-<p style="color:#91a69a;font-size:13px">Your wallet balance will appear here after verified payment.</p>
-<button class="btn" onclick="showPage('funds')">Add Funds →</button>
-</div>
-</div>
-</section>
+<main>
 
 <!-- NEW ORDER -->
-<section id="order" class="page">
-<div class="header"><div><h1>New Order</h1><p>Place a new social media order.</p></div></div>
-<div class="box">
-<label>SERVICE</label>
-<select><option>Instagram Followers • ₹25 / 1K</option><option>Instagram Likes • ₹9 / 1K</option><option>YouTube Views • ₹29 / 1K</option></select>
-<label>LINK</label><input placeholder="Paste your link">
-<div class="row">
-<div><label>QUANTITY</label><input placeholder="1000"></div>
-<div><label>PRICE</label><input value="₹25.00" readonly></div>
-</div>
-<button class="btn">Place Order</button>
-</div>
+<section id="new" class="section active">
+
+  <!-- USERNAME -->
+  <div class="stat">
+
+    <div class="ico">
+      ☷
+    </div>
+
+    <div>
+
+      <div class="num" id="username">
+        Qraxsmm
+      </div>
+
+      <div class="label">
+        YOUR USERNAME
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- BALANCE -->
+  <div class="stat">
+
+    <div class="ico">
+      ▣
+    </div>
+
+    <div>
+
+      <div class="num" id="balance">
+        ₹0
+      </div>
+
+      <div class="label">
+        YOUR BALANCE
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ORDERS -->
+  <div class="stat">
+
+    <div class="ico">
+      ♙
+    </div>
+
+    <div>
+
+      <div class="num" id="myOrders">
+        0
+      </div>
+
+      <div class="label">
+        YOUR ORDERS
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- TOTAL ORDERS -->
+  <div class="stat">
+
+    <div class="ico">
+      ♙
+    </div>
+
+    <div>
+
+      <div class="num">
+        0
+      </div>
+
+      <div class="label">
+        OUR TOTAL ORDERS
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ORDER PANEL -->
+  <div class="panel">
+
+    <!-- SOCIAL ICONS -->
+    <div class="socials">
+
+      <button class="social active">
+        ☰
+      </button>
+
+      <button class="social">
+        ◎
+      </button>
+
+      <button class="social">
+        ◉
+      </button>
+
+      <button class="social">
+        ➤
+      </button>
+
+      <button class="social">
+        ♪
+      </button>
+
+      <button class="social">
+        ＋
+      </button>
+
+    </div>
+
+
+    <!-- SEARCH -->
+    <div class="search">
+
+      <span class="magnify">
+        ⌕
+      </span>
+
+      Search
+
+    </div>
+
+
+    <!-- CATEGORY -->
+    <div class="field-label">
+      Category
+    </div>
+
+    <select
+      id="category"
+      class="select"
+      onchange="categoryChanged()">
+
+      <option>
+        📸 Instagram Followers (Working) Fixed: 01-09-2026
+      </option>
+
+      <option>
+        📸 Instagram Likes
+      </option>
+
+      <option>
+        📸 Instagram Views
+      </option>
+
+      <option>
+        ▶️ YouTube Services
+      </option>
+
+      <option>
+        ♪ TikTok Services
+      </option>
+
+      <option>
+        ➤ Telegram Services
+      </option>
+
+    </select>
+
+
+    <!-- SERVICE -->
+    <div class="field-label">
+      Service
+    </div>
+
+    <select
+      id="service"
+      class="select"
+      onchange="serviceChanged()">
+
+      <option value="397">
+        397 - Instagram Followers [Speed: FAST]
+      </option>
+
+      <option value="398">
+        398 - 100% Indian Followers
+      </option>
+
+      <option value="3408">
+        3408 - Real Accounts
+      </option>
+
+      <option value="5785">
+        5785 - Real Accounts, 10K/day
+      </option>
+
+    </select>
+
+
+    <!-- DESCRIPTION -->
+    <div class="field-label">
+      Description
+    </div>
+
+    <div
+      class="desc"
+      id="description">
+
+      Refill: No ⚠️
+
+    </div>
+
+
+    <!-- LINK -->
+    <div class="field-label">
+      Link
+    </div>
+
+    <input
+      class="input"
+      id="link"
+      placeholder="">
+
+
+    <!-- QUANTITY -->
+    <div class="field-label">
+      Quantity
+    </div>
+
+    <input
+      class="input"
+      id="qty"
+      type="number"
+      min="100"
+      max="50000"
+      placeholder=""
+      oninput="calc()">
+
+    <div class="help">
+      Min: 100 – Max: 50 000
+    </div>
+
+
+    <!-- AVERAGE TIME -->
+    <div class="field-label">
+      Average time ⓘ
+    </div>
+
+    <div class="input" id="avg">
+      6 minutes
+    </div>
+
+
+    <!-- CHARGE -->
+    <div class="field-label">
+      Charge
+    </div>
+
+    <div class="charge" id="charge">
+      ₹0.00
+    </div>
+
+
+    <!-- PLACE ORDER -->
+    <button
+      class="place"
+      onclick="placeOrder()">
+
+      Place order
+
+    </button>
+
+  </div>
+
 </section>
 
-<!-- SERVICES -->
-<section id="services" class="page">
-<div class="header"><div><h1>Services</h1><p>Available Qraxsmm services.</p></div></div>
-<div class="serviceGrid">
-<div class="service"><b>Instagram Followers</b><span>Premium followers</span><b>From ₹25 / 1K</b></div>
-<div class="service"><b>Instagram Likes</b><span>Fast likes</span><b>From ₹9 / 1K</b></div>
-<div class="service"><b>Instagram Views • ₹5 / 1K</b><span>Video views</span><b>From ₹5 / 1K</b></div>
-<div class="service"><b>YouTube Views • ₹29 / 1K</b><span>High retention views</span><b>From ₹29 / 1K</b></div>
-<div class="service"><b>YouTube Subscribers • ₹99 / 1K</b><span>Premium subscribers</span><b>From ₹99 / 1K</b></div>
-<div class="service"><b>TikTok Followers • ₹25 / 1K</b><span>Premium delivery</span><b>From ₹25 / 1K</b></div>
-</div>
-</section>
 
 <!-- ORDERS -->
-<section id="orders" class="page">
-<div class="header"><div><h1>Orders</h1><p>Your recent orders.</p></div></div>
-<div class="box">
-<table>
-<tr><th>Order ID</th><th>Service</th><th>Amount</th><th>Status</th></tr>
-<tr><td>-</td><td>No orders</td><td>-</td><td class="status">Waiting</td></tr>
-</table>
-</div>
+<section id="orders" class="section">
+
+  <div class="panel">
+
+    <h1>
+      Orders
+    </h1>
+
+    <div class="notice">
+      Your orders will appear here.
+    </div>
+
+  </div>
+
 </section>
 
-<!-- ADD FUNDS -->
-<section id="funds" class="page">
-<div class="header">
-<div><h1>Add Funds</h1><p>Pay using UPI and submit your UTR for verification.</p></div>
-</div>
 
-<div class="layout">
+<!-- FUNDS -->
+<section id="funds" class="section">
 
-<div class="box">
-<div class="title">💳 UPI Payment</div>
+  <div class="panel">
 
-<div class="notice">
-Enter amount → Generate QR → Pay from your UPI phone → Enter UTR → Submit Payment.
-</div>
+    <h1>
+      Add funds
+    </h1>
 
-<label>AMOUNT (₹50 - ₹50,000)</label>
-<input id="amount" type="number" min="50" max="50000" placeholder="Enter amount">
+    <div class="notice">
 
-<div class="upi">
-<div style="font-size:11px;color:#91a69a">UPI ID</div>
-<div class="upiId">raogautam1211@oksbi</div>
-<button class="btn secondary" onclick="copyUPI()">Copy UPI ID</button>
-<div id="copyMsg" class="msg"></div>
-</div>
+      <b>UPI Payment</b>
 
-<button class="btn" onclick="generateQR()">Generate QR & Pay</button>
+      <br><br>
 
-<div id="qrBox">
-<div id="upiQr"></div>
-<div class="qrDark">Scan this QR with your UPI phone</div>
-<div id="qrAmount" class="qrDark" style="font-size:12px;font-weight:normal"></div>
-</div>
+      UPI ID:
+      <b>
+        raogautam1211@oksbi
+      </b>
 
-<hr style="border:0;border-top:1px solid #1b3826;margin:22px 0">
+      <br><br>
 
-<div class="title">✅ Payment Verification</div>
-<div class="notice">
-Payment karne ke baad UPI app ka <b>UTR / Transaction ID</b> yahan enter karo. Payment pehle <b>Pending</b> rahega.
-</div>
+      Pay the amount, then submit your UTR for verification.
 
-<label>UTR / TRANSACTION ID</label>
-<input id="utr" placeholder="Example: 123456789012">
+    </div>
 
-<button class="btn" onclick="submitPayment()">Submit Payment</button>
-<div id="paymentMsg" class="msg"></div>
+  </div>
 
-</div>
-
-<div class="box">
-<div style="color:#91a69a;font-size:12px">Current Wallet Balance</div>
-<div class="amountBig" id="walletBalance">₹0.00</div>
-
-<div class="notice">
-<b>Minimum:</b> ₹50<br>
-<b>Maximum:</b> ₹50,000<br>
-<b>UPI:</b> raogautam1211@oksbi
-</div>
-
-<p style="font-size:12px;color:#91a69a">
-Payment verify hone ke baad wallet balance update kiya jayega.
-</p>
-</div>
-
-</div>
 </section>
+
 
 <!-- SUPPORT -->
-<section id="support" class="page">
-<div class="header"><div><h1>Support</h1><p>Need help with your payment or order?</p></div></div>
-<div class="box">
-<label>SUBJECT</label>
-<input placeholder="Payment / Order issue">
-<label>MESSAGE</label>
-<textarea rows="7" placeholder="Write your message"></textarea>
-<button class="btn">Send Support Request</button>
-</div>
+<section id="support" class="section">
+
+  <div class="panel">
+
+    <h1>
+      Support
+    </h1>
+
+    <div class="notice">
+      Need help? Contact Qraxsmm support.
+    </div>
+
+  </div>
+
 </section>
 
 </main>
-</div>
 
-<!-- QR LIBRARY -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<!-- FIREBASE -->
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 
 <script>
-/* =========================
-   FIREBASE CONFIG
-========================= */
 
-const firebaseConfig = {
- apiKey: "AIzaSyANFGOpmvkVad-zvADk3cJo-s2KNUsTC6Y",
- authDomain: "qraxsmm.firebaseapp.com",
- projectId: "qraxsmm",
- storageBucket: "qraxsmm.firebasestorage.app",
- messagingSenderId: "310131376142",
- appId: "1:310131376142:web:7f801a74d3d93eafc23c5f",
- measurementId: "G-QZF28DJNZ2"
+/* SELLING PRICES */
+const prices = {
+
+  397:25,
+
+  398:25,
+
+  3408:60,
+
+  5785:60
+
 };
 
-firebase.initializeApp(firebaseConfig);
-const db = firebase.firestore();
 
-const UPI_ID = "raogautam1211@oksbi";
+/* SERVICE DESCRIPTIONS */
+const descriptions = {
 
-/* =========================
-   PAGE NAVIGATION
-========================= */
+  397:'Refill: No ⚠️',
 
-function showPage(page,btn){
+  398:'Refill: No ⚠️',
 
-document.querySelectorAll(".page").forEach(function(x){
-x.classList.remove("active");
-});
+  3408:'Real Accounts • High Quality',
 
-const target=document.getElementById(page);
+  5785:'Real Accounts • Up to 10K/day'
 
-if(target){
-target.classList.add("active");
-}
+};
 
-document.querySelectorAll(".nav button").forEach(function(x){
-x.classList.remove("active");
-});
 
-if(btn){
-btn.classList.add("active");
-}
+/* CALCULATE PRICE */
+function calc(){
 
-window.scrollTo(0,0);
-}
+  const id =
+    document.getElementById('service').value;
 
-/* =========================
-   COPY UPI
-========================= */
+  const q =
+    Number(
+      document.getElementById('qty').value || 0
+    );
 
-function copyUPI(){
+  const price =
+    prices[id] || 0;
 
-navigator.clipboard.writeText(UPI_ID).then(function(){
+  const total =
+    (q / 1000) * price;
 
-document.getElementById("copyMsg").innerText="UPI ID copied ✓";
-
-}).catch(function(){
-
-document.getElementById("copyMsg").innerText=UPI_ID;
-
-});
+  document.getElementById('charge')
+    .textContent =
+    '₹' + total.toFixed(2);
 
 }
 
-/* =========================
-   AMOUNT
-========================= */
 
-function getAmount(){
+/* SERVICE CHANGE */
+function serviceChanged(){
 
-const value=document.getElementById("amount").value;
+  const id =
+    document.getElementById('service').value;
 
-if(!value){
-alert("Pehle amount enter karo.");
-return null;
-}
+  document.getElementById('description')
+    .textContent =
+    descriptions[id] ||
+    'Service information';
 
-const amount=Number(value);
-
-if(amount<50 || amount>50000){
-alert("Amount ₹50 se ₹50,000 ke beech hona chahiye.");
-return null;
-}
-
-return amount.toFixed(2);
-}
-
-/* =========================
-   UPI QR
-========================= */
-
-function generateQR(){
-
-const amount=getAmount();
-
-if(!amount) return;
-
-const upiURL=
-"upi://pay?pa="+encodeURIComponent(UPI_ID)+
-"&pn="+encodeURIComponent("Qraxsmm")+
-"&am="+encodeURIComponent(amount)+
-"&cu=INR"+
-"&tn="+encodeURIComponent("Qraxsmm Wallet Add Funds");
-
-document.getElementById("upiQr").innerHTML="";
-
-document.getElementById("qrBox").style.display="block";
-
-document.getElementById("qrAmount").innerText="Amount: ₹"+amount;
-
-if(typeof QRCode !== "undefined"){
-
-new QRCode(document.getElementById("upiQr"),{
-text:upiURL,
-width:220,
-height:220
-});
-
-}else{
-
-document.getElementById("upiQr").innerHTML=
-'<p style="color:#111">QR load nahi hua. Internet check karke refresh karo.</p>';
+  calc();
 
 }
 
-document.getElementById("paymentMsg").innerText=
-"QR ready hai. Payment karne ke baad UTR neeche submit karo.";
+
+/* CATEGORY */
+function categoryChanged(){
 
 }
 
-/* =========================
-   SUBMIT PAYMENT TO FIRESTORE
-========================= */
 
-async function submitPayment(){
+/* PLACE ORDER */
+function placeOrder(){
 
-const amount=getAmount();
+  const q =
+    Number(
+      document.getElementById('qty').value || 0
+    );
 
-if(!amount) return;
+  const link =
+    document.getElementById('link')
+      .value.trim();
 
-const utr=document.getElementById("utr").value.trim();
 
-if(!utr){
+  if(!link){
 
-alert("Payment ka UTR / Transaction ID enter karo.");
+    alert(
+      'Please enter link'
+    );
 
-return;
+    return;
 
-}
+  }
 
-if(utr.length<6){
 
-alert("UTR / Transaction ID sahi enter karo.");
+  if(q < 100 || q > 50000){
 
-return;
+    alert(
+      'Quantity must be between 100 and 50,000'
+    );
 
-}
+    return;
 
-const msg=document.getElementById("paymentMsg");
+  }
 
-msg.style.color="#20ed75";
-msg.innerText="Payment submit ho raha hai...";
 
-try{
-
-await db.collection("payments").add({
-
-amount:Number(amount),
-
-utr:utr,
-
-upiId:UPI_ID,
-
-status:"pending",
-
-createdAt:firebase.firestore.FieldValue.serverTimestamp()
-
-});
-
-msg.innerText=
-"Payment request submit ho gayi ✓ UTR: "+utr+
-" | Status: Pending";
-
-document.getElementById("utr").value="";
-
-loadPendingCount();
-
-}catch(error){
-
-console.error(error);
-
-msg.style.color="#ff7777";
-
-msg.innerText=
-"Payment save nahi hua. Firebase Firestore Rules check karo.";
-
-alert(
-"Firebase error: "+error.message+
-"\n\nFirestore Rules me payment create permission check karo."
-);
+  alert(
+    'Order form ready. Connect your secure SocialGrow Worker to submit the live order.'
+  );
 
 }
 
+
+/* SHOW SECTION */
+function show(id){
+
+  document
+    .querySelectorAll('.section')
+    .forEach(
+      x => x.classList.remove('active')
+    );
+
+  document
+    .getElementById(id)
+    .classList.add('active');
+
+  document
+    .getElementById('menu')
+    .style.display='none';
+
+  window.scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
 }
 
-/* =========================
-   PENDING COUNT
-========================= */
 
-function loadPendingCount(){
+/* MENU */
+function toggleMenu(){
 
-db.collection("payments")
-.where("status","==","pending")
-.get()
-.then(function(snapshot){
+  const m =
+    document.getElementById('menu');
 
-document.getElementById("pendingCount").innerText=snapshot.size;
-
-})
-.catch(function(error){
-
-console.log(error);
-
-});
+  m.style.display =
+    m.style.display === 'block'
+      ? 'none'
+      : 'block';
 
 }
 
-loadPendingCount();
 
-/* =========================
-   NOTE:
-   Wallet balance is NOT automatically
-   credited from browser.
-   Admin verification is required.
-========================= */
+/* INITIAL PRICE */
+calc();
+
 </script>
 
 </body>
