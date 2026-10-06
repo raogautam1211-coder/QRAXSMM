@@ -6,57 +6,15 @@
 <title>Qraxsmm - Premium SMM Panel</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:#050806;color:#fff;font-family:Arial,Helvetica,sans-serif}
-:root{--green:#20ed75;--dark:#07100b;--panel:#0b1510;--line:#1b3826;--muted:#91a69a}
-.app{display:flex;min-height:100vh}
-.sidebar{width:240px;position:fixed;left:0;top:0;bottom:0;background:#07100b;border-right:1px solid var(--line);padding:25px 15px}
-.logo{font-size:25px;font-weight:900;padding:5px 12px 30px}
-.logo span{color:var(--green)}
-.nav button{width:100%;display:block;text-align:left;border:0;background:transparent;color:#a7b7ad;padding:14px;border-radius:10px;margin:4px 0;cursor:pointer}
-.nav button:hover,.nav button.active{background:#102319;color:var(--green)}
-.sideBalance{position:absolute;left:15px;right:15px;bottom:20px;background:#0b1810;border:1px solid var(--line);border-radius:13px;padding:15px}
-.sideBalance small{color:var(--muted)}
-.sideBalance b{display:block;margin:5px 0 12px}
-.main{margin-left:240px;width:calc(100% - 240px);padding:30px}
-.page{display:none}.page.active{display:block}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
-.header h1{margin:0;font-size:27px}.header p{color:var(--muted);margin:6px 0 0;font-size:13px}
-.online{border:1px solid var(--line);background:#0b120e;border-radius:10px;padding:10px 14px;font-size:13px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}
-.card{background:linear-gradient(145deg,#0d1711,#08100b);border:1px solid var(--line);border-radius:15px;padding:20px}
-.card small{color:var(--muted)}.number{font-size:28px;font-weight:900;margin-top:8px}
-.layout{display:grid;grid-template-columns:1.4fr .6fr;gap:16px;margin-top:16px}
-.box{background:#0a120d;border:1px solid var(--line);border-radius:16px;padding:22px}
-.title{font-size:17px;font-weight:800;margin-bottom:17px}
-label{display:block;color:var(--muted);font-size:11px;margin:12px 0 7px}
-input,select,textarea{width:100%;background:#050a07;color:#fff;border:1px solid #1b3826;border-radius:9px;padding:12px;outline:none}
-input:focus,select:focus,textarea:focus{border-color:var(--green)}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.btn{background:var(--green);color:#031008;border:0;border-radius:9px;padding:12px 17px;font-weight:800;cursor:pointer;margin-top:12px}
-.btn.secondary{background:#0c1710;color:#fff;border:1px solid var(--line)}
-.notice{background:#0b2114;border:1px solid #1b4b2b;color:#a8cbb5;padding:14px;border-radius:10px;font-size:12px;margin:12px 0}
-.serviceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
-.service{background:#0a120d;border:1px solid var(--line);border-radius:14px;padding:20px}
-.service b{display:block;color:var(--green);margin-top:13px}
-.upi{border:1px solid #205b35;background:#0b1710;border-radius:14px;padding:18px;margin-top:14px}
-.upiId{font-size:18px;color:var(--green);font-weight:900;word-break:break-all}
-#qrBox{display:none;background:#fff;border-radius:14px;padding:18px;text-align:center;margin-top:16px}
-#upiQr{display:flex;justify-content:center}
-#upiQr img{width:220px;height:220px}
-.qrDark{color:#111;font-weight:800;margin-top:8px}
-.msg{min-height:20px;color:var(--green);font-size:12px;margin-top:8px}
-.amountBig{font-size:38px;font-weight:900;margin:7px 0 18px}
-table{width:100%;border-collapse:collapse}
-th,td{padding:13px;border-bottom:1px solid var(--line);text-align:left;font-size:12px}
-th{color:var(--muted)}
-.status{color:#ffcc66}
-@media(max-width:800px){
-.sidebar{width:70px;padding:20px 8px}.logo{font-size:0;text-align:center}.logo:after{content:"Q";font-size:28px;color:var(--green);font-weight:900}
-.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:18px}.sideBalance{display:none}
-.main{margin-left:70px;width:calc(100% - 70px);padding:18px 12px}.grid{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}.serviceGrid{grid-template-columns:1fr 1fr}.online{display:none}
-}
-@media(max-width:500px){.grid,.serviceGrid,.row{grid-template-columns:1fr}.main{padding:15px 9px}}
+*{box-sizing:border-box}body{margin:0;background:#f4f8fc;color:#26364a;font-family:Arial,Helvetica,sans-serif}:root{--blue:#1687e8;--line:#e1eaf2;--muted:#7b8da1}
+.app{display:flex;min-height:100vh}.sidebar{width:235px;position:fixed;inset:0 auto 0 0;background:#fff;border-right:1px solid var(--line);padding:22px 14px}.logo{font-size:25px;font-weight:900;padding:5px 12px 28px;color:#203248}.logo span{color:var(--blue)}
+.nav button{width:100%;display:block;text-align:left;border:0;background:transparent;color:#63768b;padding:13px 14px;border-radius:9px;margin:4px 0;cursor:pointer;font-size:14px}.nav button:hover,.nav button.active{background:#eaf5ff;color:var(--blue);font-weight:700}
+.sideBalance{position:absolute;left:14px;right:14px;bottom:18px;background:#f5faff;border:1px solid #dcebf8;border-radius:12px;padding:14px}.sideBalance small{color:var(--muted)}.sideBalance b{display:block;margin:5px 0 12px}.main{margin-left:235px;width:calc(100% - 235px);padding:25px 30px}.page{display:none}.page.active{display:block}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.header h1{margin:0;font-size:25px;color:#25364a}.header p{color:var(--muted);margin:6px 0 0;font-size:13px}.online{border:1px solid #d9e9f7;background:#fff;border-radius:9px;padding:9px 13px;font-size:13px;color:#15945b}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;box-shadow:0 2px 7px rgba(30,60,90,.04)}.card small{color:var(--muted)}.number{font-size:25px;font-weight:800;margin-top:7px}.layout{display:grid;grid-template-columns:1.4fr .6fr;gap:16px;margin-top:16px}.box{background:#fff;border:1px solid var(--line);border-radius:12px;padding:21px;box-shadow:0 2px 7px rgba(30,60,90,.035)}.title{font-size:17px;font-weight:800;margin-bottom:15px}
+label{display:block;color:#718398;font-size:11px;margin:12px 0 7px;font-weight:700}input,select,textarea{width:100%;background:#fff;color:#26364a;border:1px solid #dbe5ee;border-radius:7px;padding:11px;outline:none}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.btn{background:var(--blue);color:#fff;border:0;border-radius:7px;padding:11px 17px;font-weight:700;cursor:pointer;margin-top:12px}.btn.secondary{background:#fff;color:var(--blue);border:1px solid #cfe3f5}.notice{background:#eef7ff;border:1px solid #d7ebfb;color:#55708a;padding:13px;border-radius:8px;font-size:12px;margin:12px 0}
+.serviceGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.service{background:#fff;border:1px solid var(--line);border-radius:11px;padding:18px}.service b{display:block;color:var(--blue);margin-top:11px}.service span{color:#718398;font-size:13px}.upi{border:1px solid #d7e9f8;background:#f7fbff;border-radius:11px;padding:17px;margin-top:14px}.upiId{font-size:17px;color:var(--blue);font-weight:800;word-break:break-all}#qrBox{display:none;background:#fff;border:1px solid #dfe7ee;border-radius:11px;padding:18px;text-align:center;margin-top:16px}.msg{min-height:20px;color:#15945b;font-size:12px;margin-top:8px}.amountBig{font-size:36px;font-weight:900;margin:7px 0 18px}table{width:100%;border-collapse:collapse}th,td{padding:13px;border-bottom:1px solid var(--line);text-align:left;font-size:12px}th{color:var(--muted)}.status{color:#e69a00}
+@media(max-width:800px){.sidebar{width:70px;padding:20px 8px}.logo{font-size:0;text-align:center}.logo:after{content:"Q";font-size:28px;color:var(--blue);font-weight:900}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:18px}.sideBalance{display:none}.main{margin-left:70px;width:calc(100% - 70px);padding:18px 12px}.grid{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}.serviceGrid{grid-template-columns:1fr 1fr}.online{display:none}}@media(max-width:500px){.grid,.serviceGrid,.row{grid-template-columns:1fr}.main{padding:15px 9px}}
 </style>
 </head>
 
@@ -102,19 +60,21 @@ th{color:var(--muted)}
 <div class="layout">
 <div class="box">
 <div class="title">Quick Order</div>
-<div class="notice">Instagram Followers — SocialGrow service 397 • Provider ₹1 / 1K • Qraxsmm ₹25 / 1K</div>
 <label>SERVICE</label>
-<select id="quickService" onchange="calculateOrderPrice('quick')">
-<option value="397">Instagram Followers - Active Real Indian Followers</option>
+<select>
+<option>Instagram Followers • ₹25 / 1K</option>
+<option>Instagram Likes • ₹9 / 1K</option>
+<option>Instagram Views • ₹5 / 1K</option>
+<option>YouTube Views • ₹29 / 1K</option>
+<option>YouTube Subscribers • ₹99 / 1K</option>
 </select>
 <label>LINK</label>
-<input id="quickLink" placeholder="https://instagram.com/username">
+<input placeholder="Enter profile/post link">
 <div class="row">
-<div><label>QUANTITY</label><input id="quickQty" type="number" min="1000" step="1000" value="1000" oninput="calculateOrderPrice('quick')"></div>
-<div><label>PRICE</label><input id="quickPrice" value="₹25.00" readonly></div>
+<div><label>QUANTITY</label><input placeholder="1000"></div>
+<div><label>PRICE</label><input value="₹25.00" readonly></div>
 </div>
-<button class="btn" onclick="placeOrder('quick')">Place Order</button>
-<div id="quickMsg" class="msg"></div>
+<button class="btn">Place Order</button>
 </div>
 
 <div class="box">
@@ -131,16 +91,13 @@ th{color:var(--muted)}
 <div class="header"><div><h1>New Order</h1><p>Place a new social media order.</p></div></div>
 <div class="box">
 <label>SERVICE</label>
-<select id="orderService" onchange="calculateOrderPrice('order')">
-<option value="397">Instagram Followers - Active Real Indian Followers</option>
-</select>
-<label>LINK</label><input id="orderLink" placeholder="https://instagram.com/username">
+<select><option>Instagram Followers • ₹25 / 1K</option><option>Instagram Likes • ₹9 / 1K</option><option>YouTube Views • ₹29 / 1K</option></select>
+<label>LINK</label><input placeholder="Paste your link">
 <div class="row">
-<div><label>QUANTITY</label><input id="orderQty" type="number" min="1000" step="1000" value="1000" oninput="calculateOrderPrice('order')"></div>
-<div><label>PRICE</label><input id="orderPrice" value="₹25.00" readonly></div>
+<div><label>QUANTITY</label><input placeholder="1000"></div>
+<div><label>PRICE</label><input value="₹25.00" readonly></div>
 </div>
-<button class="btn" onclick="placeOrder('order')">Place Order</button>
-<div id="orderMsg" class="msg"></div>
+<button class="btn">Place Order</button>
 </div>
 </section>
 
@@ -148,12 +105,12 @@ th{color:var(--muted)}
 <section id="services" class="page">
 <div class="header"><div><h1>Services</h1><p>Available Qraxsmm services.</p></div></div>
 <div class="serviceGrid">
-<div class="service">
-<b>Instagram Followers</b>
-<span>Active Real Indian Followers • SocialGrow service ID 397</span>
-<b>₹25 / 1K</b>
-<div style="color:#91a69a;font-size:12px;margin-top:8px">Provider cost: ₹1 / 1K</div>
-</div>
+<div class="service"><b>Instagram Followers</b><span>Premium followers</span><b>From ₹25 / 1K</b></div>
+<div class="service"><b>Instagram Likes</b><span>Fast likes</span><b>From ₹9 / 1K</b></div>
+<div class="service"><b>Instagram Views • ₹5 / 1K</b><span>Video views</span><b>From ₹5 / 1K</b></div>
+<div class="service"><b>YouTube Views • ₹29 / 1K</b><span>High retention views</span><b>From ₹29 / 1K</b></div>
+<div class="service"><b>YouTube Subscribers • ₹99 / 1K</b><span>Premium subscribers</span><b>From ₹99 / 1K</b></div>
+<div class="service"><b>TikTok Followers • ₹25 / 1K</b><span>Premium delivery</span><b>From ₹25 / 1K</b></div>
 </div>
 </section>
 
@@ -275,20 +232,6 @@ firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
 const UPI_ID = "raogautam1211@oksbi";
-const API_BACKEND = "https://qraxsmm.raogautam1211.workers.dev";
-
-/* Qraxsmm pricing slabs: provider cost -> Qraxsmm selling price */
-const QRAXSMM_PRICING = {
-  1: 25,
-  2: 8,
-  5: 10
-};
-function qraxsmmPrice(providerRatePer1K){
-  const rate=Number(providerRatePer1K);
-  if(Object.prototype.hasOwnProperty.call(QRAXSMM_PRICING, rate)) return QRAXSMM_PRICING[rate];
-  return rate;
-}
-
 
 /* =========================
    PAGE NAVIGATION
@@ -506,100 +449,6 @@ loadPendingCount();
    credited from browser.
    Admin verification is required.
 ========================= */
-
-/* =========================
-   QRAXSMM ORDER SYSTEM
-   SocialGrow service 397
-========================= */
-const QRAXSMM_SERVICES = {
-  "397": {
-    name: "Instagram Followers - Active Real Indian Followers",
-    providerCostPer1000: 1,
-    sellPricePer1000: 25
-  }
-};
-
-function calculateOrderPrice(which){
-  const p = which === "quick" ? "quick" : "order";
-  const service = QRAXSMM_SERVICES[document.getElementById(p+"Service").value];
-  const qty = Number(document.getElementById(p+"Qty").value || 0);
-  const priceEl = document.getElementById(p+"Price");
-
-  if(!service || !qty){ priceEl.value = "₹0.00"; return 0; }
-
-  const price = (qty / 1000) * service.sellPricePer1000;
-  priceEl.value = "₹" + price.toFixed(2);
-  return price;
-}
-
-async function placeOrder(which){
-  const p = which === "quick" ? "quick" : "order";
-  const link = document.getElementById(p+"Link").value.trim();
-  const qty = Number(document.getElementById(p+"Qty").value);
-  const serviceId = document.getElementById(p+"Service").value;
-  const msg = document.getElementById(p+"Msg");
-  const service = QRAXSMM_SERVICES[serviceId];
-  const price = calculateOrderPrice(which);
-
-  if(!/^https?:\/\/(www\.)?instagram\.com\//i.test(link)){
-    alert("Valid Instagram link enter karo.");
-    return;
-  }
-  if(!Number.isInteger(qty) || qty < 1000 || qty % 1000 !== 0){
-    alert("Quantity minimum 1000 aur 1000 ke multiple me rakho.");
-    return;
-  }
-
-  const balance = Number((document.getElementById("walletBalance")?.innerText || "₹0").replace(/[₹,]/g,"")) || 0;
-  if(balance < price){
-    msg.style.color = "#ff7777";
-    msg.innerText = "Insufficient wallet balance. Pehle Add Funds me payment karke UTR submit karo.";
-    return;
-  }
-
-  if(!confirm("Order amount ₹"+price.toFixed(2)+" hai. Place order karna hai?")) return;
-
-  msg.style.color = "#20ed75";
-  msg.innerText = "SocialGrowSMM ko order bheja ja raha hai...";
-
-  try{
-    const response = await fetch(API_BACKEND,{
-      method:"POST",
-      headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({action:"add",service:serviceId,link:link,quantity:qty})
-    });
-    const result = await response.json();
-    if(!response.ok || !result.ok) throw new Error(result.error || "Provider order failed.");
-
-    const provider = result.provider || {};
-    const providerOrderId = provider.order || provider.order_id || "";
-
-    await db.collection("orders").add({
-      provider:"SocialGrowSMM",
-      providerServiceId:serviceId,
-      service:service.name,
-      link:link,
-      quantity:qty,
-      sellPrice:price,
-      providerCostPer1000:service.providerCostPer1000,
-      providerOrderId:String(providerOrderId),
-      providerResponse:provider,
-      status:providerOrderId ? "processing" : "provider_response",
-      createdAt:firebase.firestore.FieldValue.serverTimestamp()
-    });
-
-    msg.innerText = providerOrderId ? "Order placed ✓ Provider Order ID: "+providerOrderId : "Provider response mil gaya ✓";
-    document.getElementById(p+"Link").value = "";
-  }catch(error){
-    console.error(error);
-    msg.style.color = "#ff7777";
-    msg.innerText = "Order nahi laga: " + error.message;
-  }
-}
-
-calculateOrderPrice("quick");
-calculateOrderPrice("order");
-
 </script>
 
 </body>
