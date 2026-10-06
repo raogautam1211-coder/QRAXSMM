@@ -3,18 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Qraxsmm - SMM Panel</title>
+<title>Qraxsmm - Premium SMM Panel</title>
 
 <style>
 *{box-sizing:border-box}
-
-:root{
- --blue:#0788e8;
- --darkblue:#063b68;
- --bg:#eaf4ff;
- --field:#eef7ff;
- --white:#fff;
-}
 
 html,body{
  margin:0;
@@ -22,7 +14,7 @@ html,body{
  width:100%;
  overflow-x:hidden;
  font-family:Arial,Helvetica,sans-serif;
- background:var(--bg);
+ background:#eaf4ff;
  color:#050505;
 }
 
@@ -36,7 +28,7 @@ html,body{
  gap:18px;
 }
 
-.top-x{
+.topbar .close{
  font-size:42px;
 }
 
@@ -49,74 +41,75 @@ html,body{
 .top-title small{
  display:block;
  font-size:16px;
- margin-top:4px;
+ margin-top:5px;
 }
 
 .top-icon{
- font-size:30px;
+ font-size:29px;
 }
 
 .header{
- height:125px;
+ height:130px;
  background:#fff;
  display:flex;
  align-items:center;
  justify-content:space-between;
  padding:0 45px;
- border-bottom:1px solid #d7e2eb;
-}
-
-.logo-box{
- display:flex;
- align-items:center;
- gap:10px;
- color:var(--darkblue);
- font-size:38px;
- font-weight:800;
+ border-bottom:1px solid #d9e4ed;
 }
 
 .logo{
- width:65px;
- height:65px;
- background:#0788e8;
- border-radius:14px;
  display:flex;
  align-items:center;
- justify-content:center;
- font-size:43px;
+ gap:12px;
+ color:#063b68;
+ font-size:39px;
+ font-weight:800;
 }
 
-.menu-btn{
- color:var(--darkblue);
- font-size:48px;
+.logo-icon{
+ width:66px;
+ height:66px;
+ border-radius:15px;
+ background:#0788e8;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ font-size:44px;
+}
+
+.hamburger{
+ font-size:52px;
+ color:#063b68;
  cursor:pointer;
 }
 
 .container{
+ width:100%;
  max-width:920px;
  margin:auto;
- padding:28px 30px 80px;
+ padding:32px 30px 80px;
 }
 
 .card{
  width:100%;
+ min-height:245px;
  background:#fff;
- border:6px solid var(--blue);
+ border:6px solid #0788e8;
  border-radius:30px;
- min-height:250px;
- margin-bottom:55px;
- padding:30px 55px;
+ margin-bottom:52px;
+ padding:32px 42px;
  display:flex;
  align-items:center;
- gap:55px;
+ gap:45px;
 }
 
 .card-icon{
- width:90px;
- min-width:90px;
+ width:95px;
+ min-width:95px;
+ color:#063b68;
+ font-size:62px;
  text-align:center;
- color:var(--darkblue);
- font-size:65px;
 }
 
 .card-content{
@@ -125,21 +118,21 @@ html,body{
 }
 
 .card-number{
- font-size:55px;
+ font-size:52px;
  font-weight:800;
  line-height:1.1;
  overflow-wrap:anywhere;
 }
 
 .card-label{
- font-size:25px;
- font-weight:800;
  margin-top:22px;
+ font-size:24px;
+ font-weight:800;
 }
 
 .panel{
  background:#fff;
- border-radius:28px;
+ border-radius:30px;
  padding:45px 48px 55px;
  width:100%;
 }
@@ -148,17 +141,17 @@ html,body{
  display:grid;
  grid-template-columns:repeat(5,1fr);
  gap:15px;
- margin-bottom:50px;
+ margin-bottom:45px;
 }
 
 .social{
- height:85px;
+ height:82px;
  border:0;
  border-radius:18px;
  background:#e8f4ff;
- box-shadow:0 4px 0 #b8daf0;
  color:#0788e8;
- font-size:38px;
+ font-size:35px;
+ box-shadow:0 4px 0 #b8daf0;
 }
 
 .social.active{
@@ -169,25 +162,25 @@ html,body{
 
 .search{
  width:100%;
- height:90px;
- background:var(--field);
+ height:88px;
+ background:#eef7ff;
  border-radius:17px;
  box-shadow:0 4px 0 #beddec;
- padding:0 25px;
  display:flex;
  align-items:center;
- font-size:28px;
- color:var(--darkblue);
- margin-bottom:27px;
+ padding:0 23px;
+ font-size:27px;
+ color:#063b68;
+ margin-bottom:25px;
 }
 
-.search-icon{
- font-size:40px;
- margin-right:20px;
+.search span{
+ font-size:38px;
+ margin-right:18px;
 }
 
 .label{
- font-size:27px;
+ font-size:26px;
  font-weight:800;
  margin:25px 0 13px;
 }
@@ -196,44 +189,47 @@ html,body{
 select,
 .description{
  width:100%;
- min-height:90px;
+ min-height:88px;
  border:0;
  outline:none;
  border-radius:17px;
- background:var(--field);
+ background:#eef7ff;
  box-shadow:0 4px 0 #beddec;
- padding:22px;
- font-size:25px;
+ padding:20px 22px;
+ font-size:23px;
  color:#073b68;
 }
 
 .description{
- min-height:100px;
  display:flex;
  align-items:center;
+ min-height:100px;
 }
 
 .help{
- font-size:20px;
- margin:14px 0 25px;
+ font-size:19px;
+ margin-top:13px;
+ color:#222;
 }
 
 .charge{
- font-size:30px;
+ font-size:31px;
  font-weight:800;
- margin-top:20px;
+ margin-top:18px;
+ color:#063b68;
 }
 
-.order-btn{
+.order-btn,
+.blue-btn{
  width:100%;
- height:90px;
- margin-top:30px;
+ height:88px;
  border:0;
  border-radius:17px;
  background:#0788e8;
- color:white;
- font-size:28px;
+ color:#fff;
+ font-size:27px;
  font-weight:800;
+ margin-top:28px;
  box-shadow:0 4px 0 #0670bb;
 }
 
@@ -248,21 +244,21 @@ select,
 .menu{
  position:fixed;
  right:20px;
- top:90px;
- width:220px;
- background:white;
+ top:88px;
+ width:230px;
+ background:#fff;
  border-radius:18px;
  padding:12px;
- box-shadow:0 10px 30px #0003;
- z-index:100;
+ box-shadow:0 10px 35px #0004;
+ z-index:1000;
  display:none;
 }
 
 .menu button{
  width:100%;
- padding:15px;
- margin:5px 0;
  border:0;
+ padding:15px;
+ margin:4px 0;
  border-radius:12px;
  background:#eaf4ff;
  color:#063b68;
@@ -270,44 +266,99 @@ select,
  font-weight:700;
 }
 
-.notice{
+.fund-card{
+ background:#eef7ff;
+ border-radius:25px;
+ padding:30px;
+ margin-top:25px;
+}
+
+.fund-title{
+ font-size:34px;
+ font-weight:800;
+ margin-bottom:25px;
+}
+
+.upi-label{
+ font-size:22px;
+ margin-bottom:8px;
+}
+
+.upi-id{
+ font-size:27px;
+ font-weight:800;
+ color:#063b68;
+ word-break:break-all;
+ margin-bottom:25px;
+}
+
+.qr-wrap{
+ background:#fff;
+ border-radius:20px;
+ padding:22px;
+ text-align:center;
+ margin:25px 0;
+}
+
+#qrcode{
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ min-height:20px;
+}
+
+#qrcode img,
+#qrcode canvas{
+ max-width:100%;
+ height:auto;
+}
+
+.pay-note{
+ font-size:20px;
+ line-height:1.5;
+}
+
+.status{
+ margin-top:18px;
+ padding:15px;
+ border-radius:12px;
+ display:none;
+ font-size:18px;
+ font-weight:700;
+}
+
+.amount-box{
+ font-size:24px;
+ font-weight:700;
+}
+
+.order-item{
+ background:#eef7ff;
+ border-radius:17px;
+ padding:20px;
+ margin-bottom:15px;
+}
+
+.empty{
  background:#eef7ff;
  border-radius:17px;
  padding:25px;
  font-size:20px;
- line-height:1.6;
 }
 
-.upi{
- font-size:25px;
- font-weight:700;
- color:#063b68;
- word-break:break-word;
-}
-
-/* MOBILE */
 @media(max-width:600px){
 
  .topbar{
-  height:74px;
-  padding:0 15px;
-  gap:15px;
- }
-
- .top-x{
-  font-size:40px;
+  padding:0 14px;
+  gap:13px;
  }
 
  .top-title{
-  font-size:27px;
+  font-size:25px;
  }
 
  .top-title small{
-  font-size:15px;
- }
-
- .top-icon{
-  font-size:27px;
+  font-size:14px;
  }
 
  .header{
@@ -315,76 +366,68 @@ select,
   padding:0 45px;
  }
 
- .logo-box{
-  font-size:34px;
+ .logo{
+  font-size:33px;
  }
 
- .logo{
+ .logo-icon{
   width:63px;
   height:63px;
+  font-size:40px;
  }
 
- .menu-btn{
-  font-size:47px;
+ .hamburger{
+  font-size:48px;
  }
 
  .container{
-  width:100%;
-  padding:28px 30px 70px;
+  padding:30px 30px 70px;
  }
 
  .card{
-  min-height:250px;
-  padding:28px 30px;
-  gap:28px;
-  margin-bottom:55px;
+  padding:28px 25px;
+  gap:25px;
+  min-height:245px;
  }
 
  .card-icon{
   width:65px;
   min-width:65px;
-  font-size:52px;
+  font-size:50px;
  }
 
  .card-number{
-  font-size:43px;
+  font-size:42px;
  }
 
  .card-label{
-  font-size:23px;
-  line-height:1.2;
+  font-size:22px;
  }
 
  .panel{
-  padding:42px 47px 50px;
+  padding:40px 47px 50px;
  }
 
  .socials{
   grid-template-columns:repeat(5,1fr);
-  gap:14px;
+  gap:13px;
  }
 
  .social{
-  height:80px;
-  font-size:32px;
+  height:78px;
+  font-size:30px;
  }
 
- .search{
+ .fund-card{
+  padding:24px;
+ }
+
+ .fund-title{
+  font-size:30px;
+ }
+
+ .upi-id{
   font-size:24px;
- }
-
- .label{
-  font-size:25px;
- }
-
- .input,
- select,
- .description{
-  font-size:23px;
- }
-
- .menu{
-  right:15px;
  }
 }
 </style>
@@ -392,10 +435,9 @@ select,
 
 <body>
 
-<!-- TOP BAR -->
+<!-- TOP BROWSER STYLE BAR -->
 <div class="topbar">
-
- <div class="top-x">×</div>
+ <div class="close">×</div>
 
  <div class="top-title">
   New order
@@ -405,21 +447,18 @@ select,
  <div class="top-icon">☷</div>
  <div class="top-icon">♡</div>
  <div class="top-icon">⋮</div>
-
 </div>
 
 
 <!-- HEADER -->
 <div class="header">
 
- <div class="logo-box">
-  <div class="logo">⚡</div>
+ <div class="logo">
+  <div class="logo-icon">⚡</div>
   Qraxsmm
  </div>
 
- <div class="menu-btn" onclick="toggleMenu()">
-  ☰
- </div>
+ <div class="hamburger" onclick="toggleMenu()">☰</div>
 
 </div>
 
@@ -463,7 +502,7 @@ select,
 
   <div class="card-content">
 
-   <div class="card-number">
+   <div class="card-number" id="username">
     Qraxsmm
    </div>
 
@@ -482,7 +521,7 @@ select,
 
   <div class="card-content">
 
-   <div class="card-number">
+   <div class="card-number" id="balance">
     ₹0
    </div>
 
@@ -501,7 +540,7 @@ select,
 
   <div class="card-content">
 
-   <div class="card-number">
+   <div class="card-number" id="myOrders">
     0
    </div>
 
@@ -554,7 +593,7 @@ select,
 
 
   <div class="search">
-   <span class="search-icon">⌕</span>
+   <span>⌕</span>
    Search
   </div>
 
@@ -565,29 +604,12 @@ select,
 
   <select id="category">
 
-   <option>
-    📸 Instagram Followers (Working) Fixed: 01-09-2026
-   </option>
-
-   <option>
-    📸 Instagram Likes
-   </option>
-
-   <option>
-    📸 Instagram Views
-   </option>
-
-   <option>
-    ▶️ YouTube Services
-   </option>
-
-   <option>
-    ♪ TikTok Services
-   </option>
-
-   <option>
-    ➤ Telegram Services
-   </option>
+   <option>📸 Instagram Followers (Working) Fixed: 01-09-2026</option>
+   <option>📸 Instagram Likes</option>
+   <option>📸 Instagram Views</option>
+   <option>▶️ YouTube Services</option>
+   <option>♪ TikTok Services</option>
+   <option>➤ Telegram Services</option>
 
   </select>
 
@@ -596,14 +618,14 @@ select,
    Service
   </div>
 
-  <select id="service" onchange="calculate()">
+  <select id="service" onchange="calculateCharge()">
 
    <option value="25">
     397 - Instagram Followers [Speed: FAST]
    </option>
 
-   <option value="25">
-    398 - 100% Indian Followers
+   <option value="8">
+    Instagram Followers - Premium
    </option>
 
    <option value="10">
@@ -644,7 +666,7 @@ select,
 
   <input
    class="input"
-   id="link"
+   id="orderLink"
    type="url"
    placeholder="">
 
@@ -659,8 +681,8 @@ select,
    type="number"
    min="100"
    max="50000"
-   oninput="calculate()">
-
+   placeholder="1000"
+   oninput="calculateCharge()">
 
   <div class="help">
    Min: 100 – Max: 50 000
@@ -700,13 +722,9 @@ select,
 
  <div class="panel">
 
-  <h1>
-   Orders
-  </h1>
+  <h1>Orders</h1>
 
-  <div class="notice">
-   Your orders will appear here.
-  </div>
+  <div id="ordersList"></div>
 
  </div>
 
@@ -719,31 +737,89 @@ select,
 
  <div class="panel">
 
-  <h1>
-   Add funds
-  </h1>
+  <h1>Add funds</h1>
 
-  <div class="notice">
 
-   <h2>
+  <div class="fund-card">
+
+   <div class="fund-title">
     UPI Payment
-   </h2>
+   </div>
 
-   <p>
+
+   <div class="upi-label">
     UPI ID:
-   </p>
+   </div>
 
-   <div class="upi">
+   <div class="upi-id">
     raogautam1211@oksbi
    </div>
 
-   <br>
 
-   <p>
-    Pay the amount, then submit your UTR for verification.
-   </p>
+   <div class="label">
+    Amount
+   </div>
 
- </div>
+   <input
+    class="input"
+    id="fundAmount"
+    type="number"
+    min="1"
+    placeholder="Enter amount">
+
+
+   <button
+    class="blue-btn"
+    onclick="generateQR()">
+
+    Generate UPI QR
+
+   </button>
+
+
+   <div class="qr-wrap">
+
+    <div id="qrcode">
+    </div>
+
+   </div>
+
+
+   <div class="pay-note">
+
+    <b>Step 1:</b> Amount enter karo.<br>
+    <b>Step 2:</b> QR scan karke payment karo.<br>
+    <b>Step 3:</b> Payment ke baad UTR number submit karo.
+
+   </div>
+
+
+   <div class="label">
+    UTR Number
+   </div>
+
+   <input
+    class="input"
+    id="utr"
+    type="text"
+    placeholder="Enter UTR / Transaction ID">
+
+
+   <button
+    class="blue-btn"
+    onclick="submitPayment()">
+
+    Submit UTR
+
+   </button>
+
+
+   <div
+    class="status"
+    id="paymentStatus">
+   </div>
+
+  </div>
 
  </div>
 
@@ -756,134 +832,518 @@ select,
 
  <div class="panel">
 
-  <h1>
-   Support
-  </h1>
+  <h1>Support</h1>
 
-  <div class="notice">
-   Need help? Contact Qraxsmm support.
+  <div class="empty">
+   Qraxsmm Support
+   <br><br>
+   Payment ya order related problem ke liye support se contact karein.
   </div>
 
  </div>
 
 </section>
 
-
 </div>
+
+
+<!-- QR CODE LIBRARY -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+
+<!-- FIREBASE -->
+<script type="module">
+
+import {
+ initializeApp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+ getFirestore,
+ collection,
+ addDoc,
+ serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+
+const firebaseConfig = {
+
+ apiKey:"AIzaSyANFGOpmvkVad-zvADk3cJo-s2KNUsTCY6",
+
+ authDomain:"qraxsmm.firebaseapp.com",
+
+ projectId:"qraxsmm",
+
+ storageBucket:"qraxsmm.firebasestorage.app",
+
+ messagingSenderId:"310131376142",
+
+ appId:"1:310131376142:web:7f801a74d3d93eafc23c5f",
+
+ measurementId:"G-QZF28DJNZ2"
+
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+
+/* MAKE FIREBASE AVAILABLE */
+
+window.qraxsmmDB = db;
+
+window.qraxsmmCollection = collection;
+
+window.qraxsmmAddDoc = addDoc;
+
+window.qraxsmmTimestamp = serverTimestamp;
+
+</script>
 
 
 <script>
 
-/* PAGE NAVIGATION */
-
-function openPage(page){
-
- document
-  .querySelectorAll('.section')
-  .forEach(function(section){
-
-   section.classList.remove('active');
-
-  });
-
- document
-  .getElementById(page)
-  .classList.add('active');
-
- document
-  .getElementById('menu')
-  .style.display='none';
-
- window.scrollTo(0,0);
-
-}
-
-
-/* MENU */
+/* ================= MENU ================= */
 
 function toggleMenu(){
 
  const menu =
-  document.getElementById('menu');
+ document.getElementById("menu");
 
- if(menu.style.display==='block'){
+ if(menu.style.display === "block"){
 
-  menu.style.display='none';
+  menu.style.display="none";
 
  }else{
 
-  menu.style.display='block';
+  menu.style.display="block";
 
  }
 
 }
 
 
-/* PRICE CALCULATION */
+/* ================= PAGE ================= */
 
-function calculate(){
-
- const price =
-  Number(
-   document.getElementById('service').value
-  );
-
- const quantity =
-  Number(
-   document.getElementById('quantity').value || 0
-  );
-
- const total =
-  (quantity / 1000) * price;
+function openPage(page){
 
  document
-  .getElementById('charge')
-  .innerText =
-  '₹' + total.toFixed(2);
+ .querySelectorAll(".section")
+ .forEach(function(section){
+
+  section.classList.remove("active");
+
+ });
+
+ document
+ .getElementById(page)
+ .classList.add("active");
+
+ document
+ .getElementById("menu")
+ .style.display="none";
+
+ window.scrollTo(0,0);
+
+ if(page==="orders"){
+  loadOrders();
+ }
 
 }
 
 
-/* ORDER */
+/* ================= PRICE ================= */
+
+function calculateCharge(){
+
+ const rate =
+ Number(
+  document.getElementById("service").value
+ );
+
+ const quantity =
+ Number(
+  document.getElementById("quantity").value || 0
+ );
+
+ const total =
+ (quantity / 1000) * rate;
+
+ document
+ .getElementById("charge")
+ .innerText =
+ "₹" + total.toFixed(2);
+
+}
+
+
+/* ================= PLACE ORDER ================= */
 
 function placeOrder(){
 
  const link =
-  document.getElementById('link')
-  .value.trim();
+ document
+ .getElementById("orderLink")
+ .value
+ .trim();
 
  const quantity =
-  Number(
-   document.getElementById('quantity').value
-  );
+ Number(
+  document.getElementById("quantity").value
+ );
+
+ const service =
+ document
+ .getElementById("service")
+ .selectedOptions[0]
+ .text;
+
+ const charge =
+ document
+ .getElementById("charge")
+ .innerText;
+
 
  if(!link){
 
-  alert('Please enter profile/post link.');
+  alert("Please enter profile/post link.");
 
   return;
 
  }
 
- if(quantity < 1000 || quantity > 50000){
+
+ if(quantity < 100 || quantity > 50000){
 
   alert(
-   'Quantity must be between 1000 and 50,000.'
+   "Quantity 100 se 50,000 ke beech honi chahiye."
   );
 
   return;
 
  }
 
- alert(
-  'Order system ready. Live SocialGrow connection will be added next.'
+
+ const orders =
+ JSON.parse(
+  localStorage.getItem("qraxsmm_orders") || "[]"
  );
 
+
+ orders.push({
+
+  service:service,
+
+  link:link,
+
+  quantity:quantity,
+
+  charge:charge,
+
+  status:"Pending",
+
+  date:new Date().toLocaleString()
+
+ });
+
+
+ localStorage.setItem(
+  "qraxsmm_orders",
+  JSON.stringify(orders)
+ );
+
+
+ document.getElementById("myOrders")
+ .innerText=orders.length;
+
+
+ alert(
+  "Order submitted successfully!"
+ );
+
+
+ loadOrders();
+
 }
+
+
+/* ================= ORDERS ================= */
+
+function loadOrders(){
+
+ const list =
+ document.getElementById("ordersList");
+
+ const orders =
+ JSON.parse(
+  localStorage.getItem("qraxsmm_orders") || "[]"
+ );
+
+
+ if(orders.length===0){
+
+  list.innerHTML =
+  '<div class="empty">No orders yet.</div>';
+
+  return;
+
+ }
+
+
+ list.innerHTML="";
+
+
+ orders.slice().reverse().forEach(function(order,index){
+
+  const item =
+  document.createElement("div");
+
+  item.className="order-item";
+
+  item.innerHTML=
+
+  "<b>Service:</b> "+
+  escapeHTML(order.service)+
+  "<br><br>"+
+
+  "<b>Link:</b> "+
+  escapeHTML(order.link)+
+  "<br><br>"+
+
+  "<b>Quantity:</b> "+
+  order.quantity+
+  "<br><br>"+
+
+  "<b>Charge:</b> "+
+  order.charge+
+  "<br><br>"+
+
+  "<b>Status:</b> "+
+  order.status+
+  "<br><br>"+
+
+  "<small>"+order.date+"</small>";
+
+  list.appendChild(item);
+
+ });
+
+}
+
+
+function escapeHTML(text){
+
+ return String(text)
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
+
+}
+
+
+/* ================= GENERATE UPI QR ================= */
+
+function generateQR(){
+
+ const amount =
+ Number(
+  document.getElementById("fundAmount").value
+ );
+
+
+ if(!amount || amount<=0){
+
+  alert("Pehle amount enter karo.");
+
+  return;
+
+ }
+
+
+ const upiId =
+ "raogautam1211@oksbi";
+
+ const name =
+ "Qraxsmm";
+
+
+ const upiURL =
+ "upi://pay?pa="+
+ encodeURIComponent(upiId)+
+ "&pn="+
+ encodeURIComponent(name)+
+ "&am="+
+ encodeURIComponent(amount.toFixed(2))+
+ "&cu=INR";
+
+
+ const qr =
+ document.getElementById("qrcode");
+
+
+ qr.innerHTML="";
+
+
+ new QRCode(qr,{
+
+  text:upiURL,
+
+  width:220,
+
+  height:220,
+
+  correctLevel:QRCode.CorrectLevel.H
+
+ });
+
+
+}
+
+
+/* ================= SUBMIT UTR ================= */
+
+async function submitPayment(){
+
+ const amount =
+ Number(
+  document.getElementById("fundAmount").value
+ );
+
+ const utr =
+ document
+ .getElementById("utr")
+ .value
+ .trim();
+
+
+ const status =
+ document.getElementById("paymentStatus");
+
+
+ if(!amount || amount<=0){
+
+  alert("Amount enter karo.");
+
+  return;
+
+ }
+
+
+ if(!utr){
+
+  alert("UTR number enter karo.");
+
+  return;
+
+ }
+
+
+ status.style.display="block";
+
+ status.innerText="Submitting...";
+
+
+ try{
+
+  if(
+   !window.qraxsmmDB ||
+   !window.qraxsmmCollection ||
+   !window.qraxsmmAddDoc
+  ){
+
+   throw new Error(
+    "Firebase not loaded"
+   );
+
+  }
+
+
+  await window.qraxsmmAddDoc(
+
+   window.qraxsmmCollection(
+    window.qraxsmmDB,
+    "payments"
+   ),
+
+   {
+
+    amount:amount,
+
+    utr:utr,
+
+    upiId:"raogautam1211@oksbi",
+
+    status:"pending",
+
+    createdAt:
+    window.qraxsmmTimestamp()
+
+   }
+
+  );
+
+
+  status.style.display="block";
+
+  status.innerText=
+   "✅ UTR submitted successfully. Verification pending.";
+
+  status.style.background="#dff7e7";
+
+  status.style.color="#087a38";
+
+
+  document
+   .getElementById("utr")
+   .value="";
+
+
+ }catch(error){
+
+  console.error(error);
+
+  status.style.display="block";
+
+  status.innerText=
+   "❌ Payment submit nahi hua. Firebase connection check karo.";
+
+  status.style.background="#ffe5e5";
+
+  status.style.color="#b00020";
+
+ }
+
+}
+
+
+/* ================= START ================= */
+
+document.addEventListener(
+ "DOMContentLoaded",
+ function(){
+
+  loadOrders();
+
+  calculateCharge();
+
+  const orders =
+  JSON.parse(
+   localStorage.getItem("qraxsmm_orders") || "[]"
+  );
+
+  document.getElementById("myOrders")
+  .innerText=orders.length;
+
+ }
+);
 
 </script>
 
 </body>
-</html>
+ </html>
                                                                                </html>
 
